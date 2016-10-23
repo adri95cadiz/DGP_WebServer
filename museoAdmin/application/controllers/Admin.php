@@ -15,6 +15,14 @@ class Admin extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+
+	public function prueba()
+	{
+		$this->load->view('header');
+		$this->load->view('prueba/index');
+		$this->load->view('footer');
+	}
+
 	public function forms()
 	{
 		$this->load->view('header');
