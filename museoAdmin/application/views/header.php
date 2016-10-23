@@ -287,21 +287,56 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="navbar-default sidebar" role="navigation">
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
-                            <li class="sidebar-search">
-                                <div class="">
-                                    <div class="col-md-3">
-                                        <img src="<?php echo base_url(); ?>assets/images/Escudo_de_Granada.png" width="100%">
-                                        <!-- <input type="text" class="form-control" placeholder="Search...">
-                                        <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button">
-                                            <i class="fa fa-search"></i>
-                                        </button> 
-                                        </span>-->
+                            <li class="" style="height: 100%; min-height: 90px; padding: 10px; max-height: 100px;">
+                                <div class="img-responsive">
+                                    <img src="<?php echo base_url(); ?>assets/images/LogoCajaGranada.png" width="100%">
+                                   <!--  <div class="col-md-3 col-lg-3 col-sm-4 col-xs-3" style="padding-left: 5px; padding-right: 3px; height: 70px; width: 55px;">
+                                        <div class="img-responsive" style="vertical-align: middle;">
+                                            <img src="<?php echo base_url(); ?>assets/images/Escudo_de_Granada.png" width="100%"  height="100%">
+                                        </div>
                                     </div>
-                                    <div class="col-md-9">
-                                        <center><label><i><small>Bienvenido al Sistema de Gestión de Dispositivos del museo Caja Granada </small> </i> </label></center>
-                                    </div>
+                                    <div class="col-md-9 col-lg-9 col-sm-8 col-xs-9" style="padding-left: 0px; padding-right: 0px; height: 70px; vertical-align: middle; text-align: center; display: table; display: table-cell; font-style: italic; font-weight: bold;">
+                                        Bienvenido al Sistema de Gestión de Dispositivos del museo Caja Granada
+                                    </div> -->
                                 </div>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Gestionar información<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <?php 
+                                        if(isset($elements)){
+                                            if($elements){
+                                                foreach ($elements->result() as $delements) { ?>
+                                                    <li>
+                                                        <a href="#" onclick="goTipoDispositivo('<?php echo base_url(); ?>','<?php echo $delements->ELEid; ?>', '<?php echo $delements->ELEdescription; ?>');"><?php echo $delements->ELEdescription; ?></a>
+                                                    </li>
+                                                <?php }
+                                            }
+                                        }
+                                    ?>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+                            <li>
+                                <a href="<?php echo base_url(); ?>index.php/admin/index"><i class="fa fa-dashboard fa-fw"></i> Idiomas</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo base_url(); ?>index.php/admin/index"><i class="fa fa-dashboard fa-fw"></i> Necesidades especiales</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Administración<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="<?php echo base_url(); ?>index.php/admin/flot">Añadir dispositivo</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo base_url(); ?>index.php/admin/morris">Tipos de zonas</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo base_url(); ?>index.php/admin/morris">Salas del museo</a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
                             </li>
                             <li>
                                 <a href="<?php echo base_url(); ?>index.php/admin/index"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
