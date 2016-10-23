@@ -4,6 +4,11 @@ function openDisability(ruta){
 	abrirModal('modalDisability')
 }
 
+function confirmacionEliminar(ruta){
+  base_url=ruta;
+  abrirModal('modalConfirmacion')
+}
+
 function abrirModal (idModal) {
 	$('#'+idModal).modal({
   		show:true,

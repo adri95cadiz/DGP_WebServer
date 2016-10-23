@@ -36,8 +36,9 @@ class Admin extends CI_Controller {
 	{
 		$data['elements']=$this->modelElements->getElements();
 		$this->load->view('header', $data);
-		$this->load->view('information/registroPanel');
-		$this->load->view('information/modalDisability');
+		$this->load->view('informacion/registroPanel');
+		$this->load->view('informacion/modalDisability');
+		$this->load->view('informacion/modalConfirmacion');
 		$this->load->view('footer');
 	}
 

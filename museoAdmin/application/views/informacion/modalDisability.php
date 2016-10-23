@@ -8,7 +8,7 @@
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
                           <!-- TITULO -->
-                          <h3 id="cabeceraModalSubProcesos"type="hidden" class="modal-title subfuente text-center">Hoja de Caracterización de Proceso</h3>
+                          <h3 id="cabeceraModalSubProcesos"type="hidden" class="modal-title subfuente text-center">Adjuntar Archivo Multimedia</h3>
                         </div>
 
                         <div class="modal-body">
