@@ -24,6 +24,8 @@ class Admin extends CI_Controller {
 		$data['zones']=$this->modelZone->getZonesByType($data['ELEid']);
 		$this->load->view('header', $data);
 		$this->load->view('informacion/listarDispositivos');
+		$this->load->view('informacion/modalConfirmacion2');
+		$this->load->view('informacion/modalConfirmacion3');
 		$this->load->view('footer');
 	}
 
@@ -42,6 +44,7 @@ class Admin extends CI_Controller {
 		$this->load->view('informacion/registroPanel');
 		$this->load->view('footer');
 	}
+
 	public function registroDispositivo()
 	{
 		$data['elements']=$this->modelElements->getElements();
@@ -52,13 +55,22 @@ class Admin extends CI_Controller {
 		$this->load->view('informacion/modalConfirmacion3');
 		$this->load->view('footer');
 	}
-	public function registroEventos()
+
+	public function registroDetallePanel()
 	{
 		$data['elements']=$this->modelElements->getElements();
 		$this->load->view('header', $data);
-		$this->load->view('informacion/registroEvento');
+		$this->load->view('informacion/registroDetallePanel');
 		$this->load->view('informacion/modalDisability');
 		$this->load->view('informacion/modalConfirmacion');
+		$this->load->view('footer');
+	}
+
+	public function registroSalas()
+	{
+		$data['salas']=$this->modelRooms->getRooms();
+		$this->load->view('header', $data);
+		$this->load->view('admin/registroSalas');
 		$this->load->view('footer');
 	}
 

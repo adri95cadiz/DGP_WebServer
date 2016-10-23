@@ -40,29 +40,50 @@
                                 <tbody>
                                   <tr>
                                     <td>1</td>
-                                    <td>Videogestual.mp4</td>
-                                    <td>sordo,sin dicapacidad</td>
-                                    <td><button type="button" class="btn btn-info btn-circle" onClick="confirmacionEliminar('<?php echo base_url(); ?>')"><i class="fa fa-link"></i>
-                            </button></td>
-                                    <td><button type="button" class="btn btn-warning btn-circle" onClick="confirmacionEliminar('<?php echo base_url(); ?>')"><i class="fa fa-times"></i>
+                                    <td>1942</td>
+                                    <td>El tractor moderniza el campo</td>
+                                    <td>
+                                        <form role="form" method="POST" id="frmEdit-1" class="form-horizontal" action="<?php echo base_url();?>index.php/admin/registroDetallePanel" >
+                                            <!-- <input type="text" name="ZONid" text="<?php //echo $dzones->ZONid; ?>" hidden>
+                                            <input type="text" name="PANid" text="<?php //echo $dzones->PANid; ?>" hidden> -->
+                                            <input type="text" name="ZONid" text="1" hidden>
+                                            <input type="text" name="PANid" text="1" hidden>
+                                            <button type="submit" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-pencil"></i> </button>
+                                        </form>
+                                    </td>
+                                    <td><button type="button" class="btn btn-danger btn-circle" onClick="confirmacionEliminar('<?php echo base_url(); ?>')"><i class="fa fa-times"></i>
                             </button></td>
                                   </tr>
                                   <tr>
                                     <td>2</td>
-                                    <td>Videoexplicativo.mp4</td>
-                                    <td>sin discapacidad</td>
-                                    <td><button type="button" class="btn btn-info btn-circle" onClick="confirmacionEliminar('<?php echo base_url(); ?>')"><i class="fa fa-link"></i>
-                            </button></td>
-                                    <td><button type="button" class="btn btn-warning btn-circle" onClick="confirmacionEliminar('<?php echo base_url(); ?>')"><i class="fa fa-times"></i>
+                                    <td>1967</td>
+                                    <td>Fundación de los sindicatos democráticos de estudiantes</td>
+                                    <td>
+                                        <form role="form" method="POST" id="frmEdit-2" class="form-horizontal" action="<?php echo base_url();?>index.php/admin/registroDetallePanel" >
+                                            <!-- <input type="text" name="ZONid" text="<?php //echo $dzones->ZONid; ?>" hidden>
+                                            <input type="text" name="PANid" text="<?php //echo $dzones->PANid; ?>" hidden> -->
+                                            <input type="text" name="ZONid" text="1" hidden>
+                                            <input type="text" name="PANid" text="1" hidden>
+                                            <button type="submit" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-pencil"></i> </button>
+                                        </form>
+                                    </td>
+                                    <td><button type="button" class="btn btn-danger btn-circle" onClick="confirmacionEliminar('<?php echo base_url(); ?>')"><i class="fa fa-times"></i>
                             </button></td>
                                   </tr>
                                   <tr>
                                     <td>3</td>
-                                    <td>audio.mp3</td>
-                                    <td>ciego</td>
-                                    <td><button type="button" class="btn btn-info btn-circle" onClick="confirmacionEliminar('<?php echo base_url(); ?>')"><i class="fa fa-link"></i>
-                            </button></td>
-                                    <td><button type="button" class="btn btn-warning btn-circle" onClick="confirmacionEliminar('<?php echo base_url(); ?>')"><i class="fa fa-times"></i>
+                                    <td>1979 hasta 1982</td>
+                                    <td>Crisis económica</td>
+                                    <td>
+                                        <form role="form" method="POST" id="frmEdit-3" class="form-horizontal" action="<?php echo base_url();?>index.php/admin/registroDetallePanel" >
+                                            <!-- <input type="text" name="ZONid" text="<?php //echo $dzones->ZONid; ?>" hidden>
+                                            <input type="text" name="PANid" text="<?php //echo $dzones->PANid; ?>" hidden> -->
+                                            <input type="text" name="ZONid" text="1" hidden>
+                                            <input type="text" name="PANid" text="1" hidden>
+                                            <button type="submit" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-pencil"></i> </button>
+                                        </form>
+                                    </td>
+                                    <td><button type="button" class="btn btn-danger btn-circle" onClick="confirmacionEliminar('<?php echo base_url(); ?>')"><i class="fa fa-times"></i>
                             </button></td>
                                   </tr>
                                 </tbody>

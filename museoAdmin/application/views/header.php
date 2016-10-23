@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>Museo Caja Granada</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url();?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -74,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index">SB Admin v2.0</a>
+                    <a class="navbar-brand" href="index">UGR - v0.1</a>
                 </div>
                 <!-- /.navbar-header -->
 
@@ -337,13 +337,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Administración<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="<?php echo base_url(); ?>index.php/admin/flot">Añadir dispositivo</a>
+                                        <a href="<?php echo base_url(); ?>index.php/admin/registroDispositivo">Añadir dispositivo</a>
                                     </li>
                                     <li>
                                         <a href="<?php echo base_url(); ?>index.php/admin/morris">Tipos de zonas</a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url(); ?>index.php/admin/morris">Salas del museo</a>
+                                        <a href="<?php echo base_url(); ?>index.php/admin/registroSalas">Salas del museo</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->

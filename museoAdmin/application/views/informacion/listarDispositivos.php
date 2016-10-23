@@ -18,7 +18,7 @@
                                     <th>Sala</th>
                                     <th>Cod. NFC</th>
                                     <th>Descripción</th>
-                                    <th class="text-center">Detalles</th>
+                                    <th class="text-center">Ver paneles</th>
                                     <th class="text-center">Eliminar</th>
                                 </tr>
                             </thead>
@@ -31,12 +31,15 @@
                                                 echo '<td>'.$dzones->ROOdescription.'</td>';
                                                 echo '<td width="20%">'.$dzones->ZONid.'</td>';
                                                 echo '<td>'.$dzones->ZONdescription.'</td>';
+                                                echo '<td class="center text-center" width="10%">'?>
+                                                    <form role="form" method="POST" id="frmEdit-<?php echo $dzones->ZONid; ?>" class="form-horizontal" action="<?php echo base_url();?>index.php/admin/registroPanel" >
+                                                        <input type="text" name="ZONid" text="<?php echo $dzones->ZONid; ?>" hidden>
+                                                        <button type="submit" class="btn btn-success btn-circle btn-sm"><i class="fa fa-folder-open-o"></i> </button>
+                                                    </form>
+                                                <?php 
+                                                echo '</td>';
                                                 echo '<td class="center text-center" width="10%">
-                                                    <button type="button" class="btn btn-success btn-circle btn-sm" onclick="return detallarDispositivo(\''.base_url().'\', \''.$dzones->ZONid.'\');"><i class="fa fa-folder-open-o"></i>
-                                                            </button>
-                                                </td>';
-                                                echo '<td class="center text-center" width="10%">
-                                                    <button type="button" class="btn btn-danger btn-circle btn-sm" onclick="return deleteDispositivo(\''.base_url().'\', \''.$dzones->ZONid.'\');"><i class="fa fa-times"></i>
+                                                    <button type="button" class="btn btn-danger btn-circle btn-sm" onclick="return confirmacionEliminar2(\''.base_url().'\');"><i class="fa fa-times"></i>
                                                         </button>
                                                 </td>';
                                             echo '</tr>';
