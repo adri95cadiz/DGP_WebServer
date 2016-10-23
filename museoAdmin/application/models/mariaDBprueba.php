@@ -19,9 +19,9 @@ class MariaDBprueba extends CI_Model {
  //    }
 
     public function getData(){
-        $sql= "select * from idiomas;";
-        $query = $this->db->query($sql);
-        return $query;
+        // $sql= "select * from idiomas;";
+        // $query = $this->db->query($sql);
+        // return $query;
     }
 
 

@@ -650,13 +650,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php 
-                                            foreach ($idiomas->result() as $ddata) {
-                                                echo '<tr><td>'.$ddata->IDIcod.'</td>';
-                                                echo '<td>'.$ddata->IDInombre.'</td>';
-                                                echo '<td>'.$ddata->IDIestado.'</td></tr>';
-                                            }
-                                         ?>
+                                        
                                     </tbody>
                                 </table>
                             </div>
