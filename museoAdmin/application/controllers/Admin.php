@@ -15,6 +15,14 @@ class Admin extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	public function tipoNFC()
+	{
+		$data['elements']=$this->modelElements->getElements();
+		$this->load->view('header');
+		$this->load->view('informacion/listarTipoNFC', $data);
+		$this->load->view('footer');
+	}
+
 
 	public function prueba()
 	{
@@ -93,9 +101,9 @@ class Admin extends CI_Controller {
 
 	public function tables()
 	{
-		$data['idiomas']=$this->mariaDBprueba->getData();
+		// $data['idiomas']=$this->mariaDBprueba->getData();
 		$this->load->view('header');
-		$this->load->view('templateViews/tables', $data);
+		// $this->load->view('templateViews/tables', $data);
 		$this->load->view('footer');
 	}
 
