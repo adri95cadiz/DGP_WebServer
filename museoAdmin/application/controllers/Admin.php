@@ -37,6 +37,23 @@ class Admin extends CI_Controller {
 		$data['elements']=$this->modelElements->getElements();
 		$this->load->view('header', $data);
 		$this->load->view('informacion/registroPanel');
+		$this->load->view('footer');
+	}
+	public function registroDispositivo()
+	{
+		$data['elements']=$this->modelElements->getElements();
+		$this->load->view('header', $data);
+		$this->load->view('informacion/registroDispositivo');
+		$this->load->view('informacion/modalEditarDispositivo');
+		$this->load->view('informacion/modalConfirmacion2');
+		$this->load->view('informacion/modalConfirmacion3');
+		$this->load->view('footer');
+	}
+	public function registroEventos()
+	{
+		$data['elements']=$this->modelElements->getElements();
+		$this->load->view('header', $data);
+		$this->load->view('informacion/registroEvento');
 		$this->load->view('informacion/modalDisability');
 		$this->load->view('informacion/modalConfirmacion');
 		$this->load->view('footer');

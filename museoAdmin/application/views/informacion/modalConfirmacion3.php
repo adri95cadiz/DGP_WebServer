@@ -19,7 +19,7 @@
                                     <div class="panel panel-success">
                                         <div class="row">
                                             <div class="form-group col-md-4">
-                                                <img src="<?php echo base_url(); ?>assets/images/alerta.png" width="100%">
+                                                <img src="<?php echo base_url(); ?>assets/images/alertaroja.png" width="100%">
                                             </div>
                                             <div class="form-group col-md-8">
                                                 <label for="multimediaPanel" class="text-center lead control-label">Si desea eliminar el dispositivo seleccionado y toda la información relacionada,haga clic en <b>ACEPTAR</b>.

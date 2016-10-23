@@ -8,6 +8,19 @@ function confirmacionEliminar(ruta){
   base_url=ruta;
   abrirModal('modalConfirmacion')
 }
+function confirmacionEliminar2(ruta){
+  base_url=ruta;
+  abrirModal('modalConfirmacion2')
+}
+function confirmacionEliminar3(ruta){
+  base_url=ruta;
+  abrirModal('modalConfirmacion3')
+}
+
+function editarDispositivo(ruta){
+  base_url=ruta;
+  abrirModal('modalEditarDispositivo')
+}
 
 function abrirModal (idModal) {
 	$('#'+idModal).modal({
