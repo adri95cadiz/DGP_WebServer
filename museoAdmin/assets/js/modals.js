@@ -1,5 +1,9 @@
 function openDisability(ruta){
 	base_url=ruta;
-	usuario=user;
-	openModalDisability();
+	
+	$('#modalDisability').modal({
+  		show:true,
+  		backdrop:'static',
+  	}); 
+
 }

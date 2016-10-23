@@ -26,6 +26,7 @@ class Admin extends CI_Controller {
 	{
 		$this->load->view('header');
 		$this->load->view('information/registroPanel');
+		$this->load->view('information/modalDisability');
 		$this->load->view('footer');
 	}
 

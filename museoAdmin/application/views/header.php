@@ -37,6 +37,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	    <!-- DataTables Responsive CSS -->
 	    <link href="<?php echo base_url(); ?>assets/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
 
+    <!-- /JS -->
+
+        <script src="<?php echo base_url(); ?>assets/js/functionality.js"></script>
     <!-- /OPCIONALES -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

@@ -61,12 +61,8 @@
                             <div class="form-group">
                                 <label for="multimediaPanel" class="col-lg-2 control-label">Archivo multimedia:</label>
                                 <div class="col-lg-4">
-                                  <input type="file">
-                                </div>
-                                <div class="col-lg-4">
-                                  <button type="button" onClick="openDisability('<?php echo base_url; ?>'" class="btn btn-default btn-circle btn-lg"><i class="fa fa-plus-circle"></i>
-                                
-                            </button>
+                                  <button type="button" onClick="openDisability('<?php echo base_url(); ?>')" class="btn btn-default btn-circle btn-lg"><i class="fa fa-plus-circle"></i> 
+                                    </button>
                                 </div>
                             </div>                            
                         </div>
