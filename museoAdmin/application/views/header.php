@@ -301,17 +301,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Gestionar información<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <?php 
-                                        foreach ($elements->result() as $delements) { ?>
-                                            <li>
-                                                <form role="form" method="POST" class="form-horizontal" action="<?php echo base_url(); ?>index.php/admin/getTiposDispositivos">
-                                                    <a href="#" onclick="goTipoDispositivo('');">Línea del tiempo</a>
-                                                </form>
-                                            </li>
-                                        <? }
+                                        if(isset($elements)){
+                                            if($elements){
+                                                foreach ($elements->result() as $delements) { ?>
+                                                    <li>
+                                                        <a href="#" onclick="goTipoDispositivo('<?php echo base_url(); ?>','<?php echo $delements->ELEid; ?>', '<?php echo $delements->ELEdescription; ?>');"><?php echo $delements->ELEdescription; ?></a>
+                                                    </li>
+                                                <?php }
+                                            }
+                                        }
                                     ?>
-                                    <li>
-                                        <a href="<?php echo base_url(); ?>index.php/admin/tipoNFC">Vitrinas</a>
-                                    </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
