@@ -19,8 +19,11 @@ class Admin extends CI_Controller {
 	public function tipoDispositivo()
 	{
 		$data['elements']=$this->modelElements->getElements();
+		$data['ELEid']=trim($this->input->post("ELEid"));
+		$data['ELEdescription']=trim($this->input->post("ELEdescription"));
+		$data['zones']=$this->modelZone->getZonesByType($data['ELEid']);
 		$this->load->view('header', $data);
-		$this->load->view('informacion/listarTipoNFC');
+		$this->load->view('informacion/listarDispositivos');
 		$this->load->view('footer');
 	}
 
@@ -123,7 +126,7 @@ class Admin extends CI_Controller {
 		// $data['idiomas']=$this->mariaDBprueba->getData();
 		$data['elements']=$this->modelElements->getElements();
 		$this->load->view('header', $data);
-		// $this->load->view('templateViews/tables', $data);
+		$this->load->view('templateViews/tables');
 		$this->load->view('footer');
 	}
 

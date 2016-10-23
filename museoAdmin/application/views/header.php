@@ -37,9 +37,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	    <!-- DataTables Responsive CSS -->
 	    <link href="<?php echo base_url(); ?>assets/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
 
-    <!-- /JS -->
+        <!-- Alertify -->
+        <script src="<?php echo base_url(); ?>assets/js/alertify.js"></script>
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/alertify.core.css" />
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/alertify.default.css" />
 
+        <!-- JS PROPIOS-->
         <script src="<?php echo base_url(); ?>assets/js/functionality.js"></script>
+
+
     <!-- /OPCIONALES -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -287,9 +293,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="navbar-default sidebar" role="navigation">
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
-                            <li class="" style="height: 100%; min-height: 90px; padding: 10px; max-height: 100px;">
+                            <li class="" style="min-height: 90px; padding: 10px; max-height: 100px;">
                                 <div class="img-responsive">
-                                    <img src="<?php echo base_url(); ?>assets/images/LogoCajaGranada.png" width="100%">
+                                    <img src="<?php echo base_url(); ?>assets/images/LogoCajaGranada.png" width="100%" max-height="100px">
                                    <!--  <div class="col-md-3 col-lg-3 col-sm-4 col-xs-3" style="padding-left: 5px; padding-right: 3px; height: 70px; width: 55px;">
                                         <div class="img-responsive" style="vertical-align: middle;">
                                             <img src="<?php echo base_url(); ?>assets/images/Escudo_de_Granada.png" width="100%"  height="100%">
@@ -308,7 +314,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             if($elements){
                                                 foreach ($elements->result() as $delements) { ?>
                                                     <li>
-                                                        <a href="#" onclick="goTipoDispositivo('<?php echo base_url(); ?>','<?php echo $delements->ELEid; ?>', '<?php echo $delements->ELEdescription; ?>');"><?php echo $delements->ELEdescription; ?></a>
+                                                        <form role="form" method="POST" id="form-<?php echo $delements->ELEid; ?>" class="form-horizontal" action="<?php echo base_url();?>index.php/admin/tipoDispositivo" >
+                                                            <input type="text" name="ELEid" value="<?php echo $delements->ELEid; ?>" hidden>
+                                                            <input type="text" name="ELEdescription" value="<?php echo $delements->ELEdescription; ?>" hidden>
+                                                        </form>
+                                                        <a onclick="goTipoDispositivo('<?php echo $delements->ELEid; ?>');"><?php echo $delements->ELEdescription; ?></a>
                                                     </li>
                                                 <?php }
                                             }

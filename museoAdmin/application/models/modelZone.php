@@ -2,7 +2,7 @@
 	if( !defined('BASEPATH')) 
 		exit('No se permite acceso al script');
 
-class modelElements extends CI_Model {
+class modelZone extends CI_Model {
 
     //CONSTRUCTOR DE LA CLASE
     function __construct() {
@@ -18,12 +18,17 @@ class modelElements extends CI_Model {
  //        return $query;
  //    }
 
-    public function getElements(){
-        $sql= "select * from elements;";
+    public function getZones(){
+        $sql= "select * from zone;";
         $query = $this->db->query($sql);
         return $query;
     }
 
+    public function getZonesByType($type){
+        $sql= "select * from ZONE Z inner join ROOM R on Z.ROOid=R.ROOid where ELEid='".$type."' and ZONstate='A';";
+        $query = $this->db->query($sql);
+        return $query;
+    }
 
 
 }
