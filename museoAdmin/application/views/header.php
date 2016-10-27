@@ -340,7 +340,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <a href="<?php echo base_url(); ?>index.php/admin/registroDispositivo">Añadir dispositivo</a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url(); ?>index.php/admin/morris">Tipos de zonas</a>
+                                        <a href="<?php echo base_url(); ?>index.php/admin/registroZonas">Tipos de zonas</a>
                                     </li>
                                     <li>
                                         <a href="<?php echo base_url(); ?>index.php/admin/registroSalas">Salas del museo</a>

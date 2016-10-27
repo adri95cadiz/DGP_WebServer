@@ -12,7 +12,7 @@ class Admin extends CI_Controller {
 	{
 		$data['elements']=$this->modelElements->getElements();
 		$this->load->view('header', $data);
-		$this->load->view('templateViews/index');
+		$this->load->view('admin/index');
 		$this->load->view('footer');
 	}
 
@@ -71,6 +71,15 @@ class Admin extends CI_Controller {
 		$data['salas']=$this->modelRooms->getRooms();
 		$this->load->view('header', $data);
 		$this->load->view('admin/registroSalas');
+		$this->load->view('footer');
+	}
+        
+        public function registroZonas()
+	{
+//		$data['salas']=$this->modelRooms->getRooms();
+                $data['zones']=$this->modelZone->getZones();
+                $this->load->view('header', $data);
+		$this->load->view('admin/registroZonas');
 		$this->load->view('footer');
 	}
 
