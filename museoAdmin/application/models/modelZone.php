@@ -23,6 +23,12 @@ class modelZone extends CI_Model {
         $query = $this->db->query($sql);
         return $query;
     }
+    
+    public function getListZones(){
+        $sql= "select * from zone;";
+        $query = $this->db->query($sql);
+        return $query;
+    }
 
     public function getZonesByType($type){
         $sql= "select * from ZONE Z inner join ROOM R on Z.ROOid=R.ROOid where ELEid='".$type."' and ZONstate='A';";
