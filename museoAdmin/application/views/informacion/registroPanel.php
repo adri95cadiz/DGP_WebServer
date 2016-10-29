@@ -12,7 +12,7 @@
                 <div class="row">
                     <form class="form-horizontal" role="form">
                       <div class="form-group">
-                        <h3 for="codigoNFC" class="col-lg-3 col-md-3 control-label">Codigo NFC: 0001</h3>
+                        <h3 for="codigoNFC" class="col-lg-3 col-md-3 control-label">Codigo NFC: <?php echo $ZONid; ?> </h3>
                       </div><br><br>
                       
 

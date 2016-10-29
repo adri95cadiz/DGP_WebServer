@@ -29,6 +29,24 @@ class Admin extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	public function idiomas()
+	{
+		$data['elements']=$this->modelElements->getElements();
+		$data['idiomas']=$this->modelLanguages->getLanguages();
+		$this->load->view('header', $data);
+		$this->load->view('admin/registroIdiomas');
+		$this->load->view('footer');
+	}
+
+	public function necesidadEspecial()
+	{
+		$data['elements']=$this->modelElements->getElements();
+		$data['necesidades']=$this->modelFeatures->getFeatures();
+		$this->load->view('header', $data);
+		$this->load->view('admin/registroNecesidades');
+		$this->load->view('footer');
+	}
+
 	public function prueba()
 	{
 		$data['elements']=$this->modelElements->getElements();
@@ -40,6 +58,7 @@ class Admin extends CI_Controller {
 	public function registroPanel()
 	{
 		$data['elements']=$this->modelElements->getElements();
+		$data['ZONid']=trim($this->input->post("txtZONid"));
 		$this->load->view('header', $data);
 		$this->load->view('informacion/registroPanel');
 		$this->load->view('footer');
@@ -48,6 +67,7 @@ class Admin extends CI_Controller {
 	public function registroDispositivo()
 	{
 		$data['elements']=$this->modelElements->getElements();
+		$data['dispositivos']=$this->modelZone->getAllZones();
 		$this->load->view('header', $data);
 		$this->load->view('informacion/registroDispositivo');
 		$this->load->view('informacion/modalEditarDispositivo');
@@ -61,7 +81,7 @@ class Admin extends CI_Controller {
 		$data['elements']=$this->modelElements->getElements();
 		$this->load->view('header', $data);
 		$this->load->view('informacion/registroDetallePanel');
-		$this->load->view('informacion/modalDisability');
+		$this->load->view('informacion/modalFeatures');
 		$this->load->view('informacion/modalConfirmacion');
 		$this->load->view('footer');
 	}
@@ -76,10 +96,9 @@ class Admin extends CI_Controller {
         
         public function registroZonas()
 	{
-//		$data['salas']=$this->modelRooms->getRooms();
-                $data['zones']=$this->modelZone->getZones();
-                $this->load->view('header', $data);
-		$this->load->view('admin/registroZonas');
+        $data['elements']=$this->modelElements->getElements();
+        $this->load->view('header', $data);
+		$this->load->view('admin/registroTipoZonas');
 		$this->load->view('footer');
 	}
 

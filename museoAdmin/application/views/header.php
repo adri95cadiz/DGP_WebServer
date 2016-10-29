@@ -318,7 +318,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                             <input type="text" name="ELEid" value="<?php echo $delements->ELEid; ?>" hidden>
                                                             <input type="text" name="ELEdescription" value="<?php echo $delements->ELEdescription; ?>" hidden>
                                                         </form>
-                                                        <a onclick="goTipoDispositivo('<?php echo $delements->ELEid; ?>');"><?php echo $delements->ELEdescription; ?></a>
+                                                        <a style="cursor:pointer; cursor: hand;" onclick="goTipoDispositivo('<?php echo $delements->ELEid; ?>');"><?php echo $delements->ELEdescription; ?></a>
                                                     </li>
                                                 <?php }
                                             }
@@ -328,16 +328,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="<?php echo base_url(); ?>index.php/admin/index"><i class="fa fa-dashboard fa-fw"></i> Idiomas</a>
+                                <a href="<?php echo base_url(); ?>index.php/admin/idiomas"><i class="fa fa-dashboard fa-fw"></i> Idiomas</a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url(); ?>index.php/admin/index"><i class="fa fa-dashboard fa-fw"></i> Necesidades especiales</a>
+                                <a href="<?php echo base_url(); ?>index.php/admin/necesidadEspecial"><i class="fa fa-dashboard fa-fw"></i> Necesidades especiales</a>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Administración<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="<?php echo base_url(); ?>index.php/admin/registroDispositivo">Añadir dispositivo</a>
+                                        <a href="<?php echo base_url(); ?>index.php/admin/registroDispositivo">Registro de zona</a>
                                     </li>
                                     <li>
                                         <a href="<?php echo base_url(); ?>index.php/admin/registroZonas">Tipos de zonas</a>

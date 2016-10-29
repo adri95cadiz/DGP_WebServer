@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Registro de Zonas del museo</h1>
+                        <h1 class="page-header">Zonas o ambientes del museo</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -36,8 +36,6 @@
                                 <tr>
                                     <th width="6%">N°</th>
                                     <th width="40%">DESCRIPCIÓN DE LA ZONA</th>
-                                    <th width="15%">Sala</th>
-                                    <th width="15%">Elemento</th>
                                     <th width="8%">Estado</th>
                                     <th width="8%" class="text-center">EDITAR</th>
                                     <th width="8%" class="text-center">ELIMINAR</th>
@@ -45,15 +43,13 @@
                             </thead>
                             <tbody>
                             <?php 
-                                if(isset($zones)){
-                                    if($zones){
-                                        foreach ($zones->result() as $dzones) { 
+                                if(isset($elements)){
+                                    if($elements){
+                                        foreach ($elements->result() as $delements) { 
                                             echo '<tr>';
-                                                echo '<td>'.$dzones->ZONid.'</td>';
-                                                echo '<td width="20%">'.$dzones->ZONdescription.'</td>';
-                                                echo '<td>'.$dzones->ROOid.'</td>';
-                                                echo '<td>'.$dzones->ELEid.'</td>';
-                                                echo '<td>'.$dzones->ZONstate.'</td>';
+                                                echo '<td>'.$delements->ELEid.'</td>';
+                                                echo '<td width="20%">'.$delements->ELEdescription.'</td>';
+                                                echo '<td>'.$delements->ELEstate.'</td>';
                                                 echo '<td class="center text-center" width="10%">'?>
                                                     <button type="submit" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-pencil"></i> </button>
                                                 <?php 

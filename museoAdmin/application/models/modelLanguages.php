@@ -2,15 +2,15 @@
 	if( !defined('BASEPATH')) 
 		exit('No se permite acceso al script');
 
-class modelLanguajes extends CI_Model {
+class modelLanguages extends CI_Model {
 
     //CONSTRUCTOR DE LA CLASE
     function __construct() {
         parent::__construct();
     }
 
-    public function getLanguajes(){
-        $sql= "select * from LANGUAJE;";
+    public function getLanguages(){
+        $sql= "select * from LANGUAGE;";
         $query = $this->db->query($sql);
         return $query;
     }
