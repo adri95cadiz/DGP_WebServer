@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => '46.101.93.32',
 	'username' => 'root',
-	'password' => '',
-	'database' => 'bdmuseo',
+	'password' => '123456admin',
+	'database' => 'BDMUSEO',
 	'dbdriver' => 'mysqli',			//el dbdriver de mariadb es el mismo mysqli
 	'dbprefix' => '',
 	'pconnect' => FALSE,
