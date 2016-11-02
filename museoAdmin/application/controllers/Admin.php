@@ -47,18 +47,11 @@ class Admin extends CI_Controller {
 		$this->load->view('footer');
 	}
 
-	public function prueba()
-	{
-		$data['elements']=$this->modelElements->getElements();
-		$this->load->view('header', $data);
-		$this->load->view('prueba/index');
-		$this->load->view('footer');
-	}
-
 	public function registroPanel()
 	{
 		$data['elements']=$this->modelElements->getElements();
 		$data['ZONid']=trim($this->input->post("txtZONid"));
+		$data['dispositivo']=$this->modelZone->getDispositivo($data['ZONid']);
 		$this->load->view('header', $data);
 		$this->load->view('informacion/registroPanel');
 		$this->load->view('footer');

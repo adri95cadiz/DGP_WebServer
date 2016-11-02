@@ -33,7 +33,7 @@
                                                 echo '<td>'.$dzones->ZONdescription.'</td>';
                                                 echo '<td class="center text-center" width="10%">'?>
                                                     <form role="form" method="POST" id="frmEdit-<?php echo $dzones->ZONid; ?>" class="form-horizontal" action="<?php echo base_url();?>index.php/admin/registroPanel" >
-                                                        <input type="text" name="txtZONid" text="<?php echo $dzones->ZONid; ?>" hidden>
+                                                        <input type="text" name="txtZONid" value="<?php echo $dzones->ZONid; ?>" hidden>
                                                         <button type="submit" class="btn btn-success btn-circle btn-sm"><i class="fa fa-folder-open-o"></i> </button>
                                                     </form>
                                                 <?php 
