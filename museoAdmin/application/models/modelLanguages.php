@@ -10,7 +10,7 @@ class modelLanguages extends CI_Model {
     }
 
     public function getLanguages(){
-        $sql= "select * from LANGUAGE;";
+        $sql= "select * from language;";
         $query = $this->db->query($sql);
         return $query;
     }

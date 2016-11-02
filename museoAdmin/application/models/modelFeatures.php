@@ -10,7 +10,7 @@ class modelFeatures extends CI_Model {
     }
 
     public function getFeatures(){
-        $sql= "select * from FEATURE;";
+        $sql= "select * from feature;";
         $query = $this->db->query($sql);
         return $query;
     }

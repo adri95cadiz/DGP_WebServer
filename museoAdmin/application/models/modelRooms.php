@@ -10,7 +10,7 @@ class modelRooms extends CI_Model {
     }
 
     public function getRooms(){
-        $sql= "select * from ROOM;";
+        $sql= "select * from room;";
         $query = $this->db->query($sql);
         return $query;
     }

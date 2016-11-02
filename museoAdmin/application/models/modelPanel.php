@@ -25,7 +25,7 @@ class modelPanel extends CI_Model {
     }
 
     public function getZonesByType($type){
-        $sql= "select * from ZONE Z inner join ROOM R on Z.ROOid=R.ROOid where ELEid='".$type."' and ZONstate='A';";
+        $sql= "select * from zone Z inner join room R on Z.ROOid=R.ROOid where ELEid='".$type."' and ZONstate='A';";
         $query = $this->db->query($sql);
         return $query;
     }
