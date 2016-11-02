@@ -25,14 +25,14 @@ class modelZone extends CI_Model {
     }
 
     public function getAllZones(){
-        $sql= "select * from zone Z inner join room R on Z.ROOid=R.ROOid inner join ELEMENTS E on Z.ELEid=E.ELEid";
+        $sql= "select * from zone Z inner join room R on Z.ROOid=R.ROOid inner join elements E on Z.ELEid=E.ELEid";
         $query = $this->db->query($sql);
         return $query;
     }
 
     public function getDispositivo($ZONid)
     {
-        $sql= "select * from zone Z inner join room R on Z.ROOid=R.ROOid inner join ELEMENTS E on Z.ELEid=E.ELEid where Z.ZONid='".$ZONid."';";
+        $sql= "select * from zone Z inner join room R on Z.ROOid=R.ROOid inner join elements E on Z.ELEid=E.ELEid where Z.ZONid='".$ZONid."';";
         $query = $this->db->query($sql);
         return $query;
     }
