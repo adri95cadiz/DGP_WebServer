@@ -16,7 +16,7 @@
                             <div class="form-group row">
                                 <label for="txtNFC" class="col-lg-2 control-label">Codigo Generado:</label>
                                 <div class="col-lg-2">
-                                    <input type="text" class="form-control hidden" id="txtNFC" disabled hidden>
+                                    <input type="text" class="form-control hidden" id="txtNFC" value="" disabled hidden>
                                     <p class="form-control-static mb-0">0004</p>
                                 </div>
                             </div>
