@@ -72,6 +72,8 @@ class Admin extends CI_Controller {
 	public function registroDetallePanel()
 	{
 		$data['elements']=$this->modelElements->getElements();
+		$data['ZONid']=trim($this->input->post("txtZONid"));
+		$data['dispositivo']=$this->modelZone->getDispositivo($data['ZONid']);
 		$this->load->view('header', $data);
 		$this->load->view('informacion/registroDetallePanel');
 		$this->load->view('informacion/modalFeatures');
