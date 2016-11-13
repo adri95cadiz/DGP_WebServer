@@ -10,7 +10,25 @@ class modelFeatures extends CI_Model {
     }
 
     public function getFeatures(){
-        $sql= "select * from feature;";
+        $sql= "call SP_features(1, '', '', '');";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+    public function setFeature($necesidad){
+        $sql= "call SP_features(2, '0', '".$necesidad."', 'A');";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+    public function editFeature($id){
+        $sql= "call SP_features(3, '".$id."','', '');";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+    public function deleteFeature($id){
+        $sql= "call SP_features(4, '".$id."', '', '');";
         $query = $this->db->query($sql);
         return $query;
     }

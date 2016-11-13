@@ -14,30 +14,28 @@
                         <div class="modal-body">
                             <!-- CONTENIDO DE MODAL -->
 
-                            <div class="table-responsive">
-                                <div class="col-md-12">
-                                    <div class="panel panel-success">
+                            
                                         <div class="row">
-                                            <div class="form-group col-md-4">
-                                                <img src="<?php echo base_url(); ?>assets/images/alerta.png" width="100%">
+                                            <div class="form-group col-md-3 col-md-offset-1">
+                                                <img src="<?php echo base_url(); ?>assets/images/alerta.png" width="100%" id="multimediaPanel">
                                             </div>
                                             <div class="form-group col-md-8">
-                                                <label for="multimediaPanel" class="text-center lead control-label">¿Está seguro que quiere eliminar este archivo?</label>
+                                                <div class="row">
+                                                    <div class="col-md-10">
+                                                        <label for="multimediaPanel" class="text-center lead control-label" id="modalAlertaMensaje">¿Está seguro que desea continuar?</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <button class="btn btn-block btn-default" id="btnAceptarModalAlerta">Aceptar</button> 
+                                                    </div>
+                                                    <div class="col-md-5 col-md-offset-1">
+                                                        <button class="btn btn-block btn-primary" data-dismiss="modal">Cancelar</button> 
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>  
-
-                                </div>
-                            </div>
                             
-                            <div class="row">
-                                <div class="col-md-3 col-md-offset-2">
-                                    <button class="btn btn-block btn-info" onClick=""data-dismiss="modal">Cancelar</button> 
-                                </div>
-                                <div class="col-md-3 col-md-offset-2">
-                                    <button class="btn btn-block btn-primary" onClick="">Eliminar</button> 
-                                </div>
-                            </div>
 
                             <!-- FIN CONTENIDO DE MODAL -->
                         </div>

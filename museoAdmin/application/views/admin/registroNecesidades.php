@@ -18,14 +18,14 @@
 		                        <div class="form-group row">
 		                            <label for="txtNecesidad" class="col-lg-3 col-sm-12 control-label">Necesidad especial:</label>
 		                            <div class="col-lg-9 col-sm-12">
-		                                <input id="txtNecesidad" type="text" class="form-control" name="txtNecesidad" >
+		                                <input id="txtNecesidad" type="text" class="form-control">
 		                            </div>
 		                        </div>
 		                    </div>
 		                    <div class="col-lg-3">
 		                        <div class="form-group row">
 		                            <div class="text-center" style="padding-top: -5px; ">
-		                                <button class="btn btn-success btn-lg" style="padding-top: -5px; margin-top: -5px;">
+		                                <button class="btn btn-success btn-lg" style="padding-top: -5px; margin-top: -5px;" onclick="registrarNecesidad('<?php echo base_url(); ?>');">
 		                                    <i class="fa fa-plus"></i> &nbsp Agregar
 		                                </button>
 		                            </div>
@@ -61,7 +61,7 @@
                                                 <?php 
                                                 echo '</td>';
                                                 echo '<td class="center text-center" width="10%">
-                                                    <button type="button" class="btn btn-danger btn-circle btn-sm" onclick="return confirmacionEliminarNecEspecial(\''.base_url().'\');"><i class="fa fa-times"></i>
+                                                    <button type="button" class="btn btn-danger btn-circle btn-sm" onclick="return confEliminarNecesidad(\''.base_url().'\', \''.$dnecesidades->FEAid.'\');"><i class="fa fa-times"></i>
                                                         </button>
                                                 </td>';
                                             echo '</tr>';

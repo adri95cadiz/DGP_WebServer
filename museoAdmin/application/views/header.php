@@ -337,7 +337,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Administración<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="<?php echo base_url(); ?>index.php/admin/registroDispositivo">Registro de zona</a>
+                                        <a href="<?php echo base_url(); ?>index.php/admin/registroDispositivo">Registro de zona (Nuevo dispositivo)</a>
                                     </li>
                                     <li>
                                         <a href="<?php echo base_url(); ?>index.php/admin/registroZonas">Tipos de zonas</a>

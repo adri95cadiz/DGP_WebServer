@@ -16,6 +16,28 @@ class Admin extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+//MANTENEDOR DE DISPOSITIVOS (ZONAS)
+	
+	public function registroDispositivo()
+	{
+		$data['elements']=$this->modelElements->getElements();
+		$data['dispositivos']=$this->modelZone->getAllZones();
+		$this->load->view('header', $data);
+		$this->load->view('informacion/registroDispositivo');
+		$this->load->view('informacion/modalEditarDispositivo');
+		$this->load->view('informacion/modalConfirmacion2');
+		$this->load->view('informacion/modalConfirmacion3');
+		$this->load->view('footer');
+	}
+
+	public function registroZonas()
+	{
+        $data['elements']=$this->modelElements->getElements();
+        $this->load->view('header', $data);
+		$this->load->view('admin/registroTipoZonas');
+		$this->load->view('footer');
+	}
+
 	public function tipoDispositivo()
 	{
 		$data['elements']=$this->modelElements->getElements();
@@ -29,6 +51,11 @@ class Admin extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+
+
+
+//MANTENEDOR DE IDIOMAS
+
 	public function idiomas()
 	{
 		$data['elements']=$this->modelElements->getElements();
@@ -38,14 +65,36 @@ class Admin extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+
+
+
+//MANTENEDOR DE NECESIDADES ESPECIALES
+
 	public function necesidadEspecial()
 	{
 		$data['elements']=$this->modelElements->getElements();
 		$data['necesidades']=$this->modelFeatures->getFeatures();
 		$this->load->view('header', $data);
 		$this->load->view('admin/registroNecesidades');
+		$this->load->view('informacion/modalConfirmacion');
 		$this->load->view('footer');
 	}
+
+	public function registrarNecesidad(){
+		$necesidad=trim($this->input->post("necesidad"));
+		$rpta=$this->modelFeatures->setFeature($necesidad);
+		echo "";
+	}
+
+ 	public function eliminarNecesidad(){
+ 		$idNecesidad=trim($this->input->post("id"));
+		$rpta=$this->modelFeatures->deleteFeature($idNecesidad);
+		echo '';
+ 	}
+
+
+
+//MANTENEDOR DE PANELES
 
 	public function registroPanel()
 	{
@@ -57,17 +106,6 @@ class Admin extends CI_Controller {
 		$this->load->view('footer');
 	}
 
-	public function registroDispositivo()
-	{
-		$data['elements']=$this->modelElements->getElements();
-		$data['dispositivos']=$this->modelZone->getAllZones();
-		$this->load->view('header', $data);
-		$this->load->view('informacion/registroDispositivo');
-		$this->load->view('informacion/modalEditarDispositivo');
-		$this->load->view('informacion/modalConfirmacion2');
-		$this->load->view('informacion/modalConfirmacion3');
-		$this->load->view('footer');
-	}
 
 	public function registroDetallePanel()
 	{
@@ -89,13 +127,8 @@ class Admin extends CI_Controller {
 		$this->load->view('footer');
 	}
         
-        public function registroZonas()
-	{
-        $data['elements']=$this->modelElements->getElements();
-        $this->load->view('header', $data);
-		$this->load->view('admin/registroTipoZonas');
-		$this->load->view('footer');
-	}
+    
+//CONTROLES DE PLANTILLA
 
 	public function forms()
 	{
