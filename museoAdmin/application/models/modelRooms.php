@@ -10,8 +10,8 @@ class modelRooms extends CI_Model {
     }
 
     public function getRooms(){
-        $sql= "select * from room;";
-        $query = $this->db->query($sql);
+        $sql= "call SP_rooms('1', '', '', '')";
+        $query = $this->modelZone->async_query($sql);
         return $query;
     }
 

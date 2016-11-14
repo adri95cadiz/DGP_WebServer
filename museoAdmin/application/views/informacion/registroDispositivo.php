@@ -1,3 +1,14 @@
+        
+        <?php 
+            //Obtención de siguiente código de dispositivo
+            if(isset($nextId)){
+                if($nextId<>0){
+                    foreach ($nextId as $row) {
+                        $nextId=$row['nextId'];
+                    }
+                }
+            }
+         ?>
 
         <!-- Page Content -->
         <div id="page-wrapper">
@@ -16,8 +27,8 @@
                             <div class="form-group row">
                                 <label for="txtNFC" class="col-lg-2 control-label">Codigo Generado:</label>
                                 <div class="col-lg-2">
-                                    <input type="text" class="form-control hidden" id="txtNFC" value="" disabled hidden>
-                                    <p class="form-control-static mb-0">0004</p>
+                                    <input type="text" class="form-control hidden" id="txtNFC" value="<?php echo $nextId; ?>" disabled hidden>
+                                    <p class="form-control-static mb-0"><?php echo $nextId; ?></p>
                                 </div>
                             </div>
                             <div class="row form-group">
@@ -58,7 +69,6 @@
                         <table width="100%" class="table table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>Nº</th>
                                         <th>Codigo NFC</th>
                                         <th>Descripción</th>
                                         <th>Sala</th>
@@ -71,19 +81,18 @@
                                 <tbody>
                                   <?php 
                                     if(isset($dispositivos)){
-                                        if($dispositivos){
-                                            foreach ($dispositivos->result() as $ddispositivos) { 
+                                        if($dispositivos<>0){
+                                            foreach ($dispositivos as $row) { 
                                                 echo '<tr>';
-                                                    echo '<td>'.$ddispositivos->ZONid.'</td>';
-                                                    echo '<td class="text-center">'.$ddispositivos->ZONid.'</td>';
-                                                    echo '<td width="20%">'.$ddispositivos->ZONdescription.'</td>';
-                                                    echo '<td width="20%">'.$ddispositivos->ROOdescription.'</td>';
-                                                    echo '<td width="20%">'.$ddispositivos->ELEdescription.'</td>';
-                                                    echo '<td class="text-center">'.$ddispositivos->ZONstate.'</td>';
-                                                    echo '<td class="center text-center" width="10%">';?>
+                                                    echo '<td width="5%" class="text-center">'.$row['ZONid'].'</td>';
+                                                    echo '<td width="30%">'.$row['ZONdescription'].'</td>';
+                                                    echo '<td width="10%">'.$row['ROOdescription'].'</td>';
+                                                    echo '<td width="20%">'.$row['ELEdescription'].'</td>';
+                                                    echo '<td width="8%" class="text-center">'.$row['ZONstate'].'</td>';
+                                                    echo '<td width="7%" class="center text-center" width="10%">';?>
                                                         <button type="button" class="btn btn-warning btn-circle" onClick="editarDispositivo('<?php echo base_url(); ?>')"><i class="fa fa-pencil"></i></button></td>
                                                     <?php
-                                                    echo '<td class="center text-center" width="10%">';?>
+                                                    echo '<td width="7%" class="center text-center" width="10%">';?>
                                                         <button type="button" class="btn btn-danger btn-circle" onClick="confirmacionEliminar2('<?php echo base_url(); ?>')"><i class="fa fa-times"></i></button></td>
                                                     <?php
                                                 echo '</tr>';

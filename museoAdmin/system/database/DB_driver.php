@@ -747,6 +747,8 @@ abstract class CI_DB_driver {
 		return $RES;
 	}
 
+
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -1982,5 +1984,7 @@ abstract class CI_DB_driver {
 	protected function _reset_select()
 	{
 	}
+
+
 
 }

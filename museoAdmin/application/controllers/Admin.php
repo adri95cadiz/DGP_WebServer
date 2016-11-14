@@ -18,23 +18,18 @@ class Admin extends CI_Controller {
 
 //MANTENEDOR DE DISPOSITIVOS (ZONAS)
 	
-	public function registroDispositivo()
+	public function registroZonas()
 	{
 		$data['elements']=$this->modelElements->getElements();
 		$data['dispositivos']=$this->modelZone->getAllZones();
+		$data['nextId']=$this->modelZone->getNextId();
+		$data['salas']=$this->modelRooms->getRooms();
+		$data['tiposZonas']=$this->modelElements->getElements();
 		$this->load->view('header', $data);
 		$this->load->view('informacion/registroDispositivo');
 		$this->load->view('informacion/modalEditarDispositivo');
 		$this->load->view('informacion/modalConfirmacion2');
 		$this->load->view('informacion/modalConfirmacion3');
-		$this->load->view('footer');
-	}
-
-	public function registroZonas()
-	{
-        $data['elements']=$this->modelElements->getElements();
-        $this->load->view('header', $data);
-		$this->load->view('admin/registroTipoZonas');
 		$this->load->view('footer');
 	}
 
@@ -48,6 +43,14 @@ class Admin extends CI_Controller {
 		$this->load->view('informacion/listarDispositivos');
 		$this->load->view('informacion/modalConfirmacion2');
 		$this->load->view('informacion/modalConfirmacion3');
+		$this->load->view('footer');
+	}
+
+	public function registroTiposZonas()
+	{
+        $data['elements']=$this->modelElements->getElements();
+        $this->load->view('header', $data);
+		$this->load->view('admin/registroTipoZonas');
 		$this->load->view('footer');
 	}
 

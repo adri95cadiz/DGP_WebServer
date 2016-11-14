@@ -542,4 +542,5 @@ class CI_DB_mysqli_driver extends CI_DB {
 		$this->conn_id->close();
 	}
 
+
 }

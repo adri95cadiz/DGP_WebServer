@@ -312,13 +312,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <?php 
                                         if(isset($elements)){
                                             if($elements){
-                                                foreach ($elements->result() as $delements) { ?>
+                                                foreach ($elements as $row) { ?>
                                                     <li>
-                                                        <form role="form" method="POST" id="form-<?php echo $delements->ELEid; ?>" class="form-horizontal" action="<?php echo base_url();?>index.php/admin/tipoDispositivo" >
-                                                            <input type="text" name="ELEid" value="<?php echo $delements->ELEid; ?>" hidden>
-                                                            <input type="text" name="ELEdescription" value="<?php echo $delements->ELEdescription; ?>" hidden>
+                                                        <form role="form" method="POST" id="form-<?php echo $row['ELEid']; ?>" class="form-horizontal" action="<?php echo base_url();?>index.php/admin/tipoDispositivo" >
+                                                            <input type="text" name="ELEid" value="<?php echo $row['ELEid']; ?>" hidden>
+                                                            <input type="text" name="ELEdescription" value="<?php echo $row['ELEdescription']; ?>" hidden>
                                                         </form>
-                                                        <a style="cursor:pointer; cursor: hand;" onclick="goTipoDispositivo('<?php echo $delements->ELEid; ?>');"><?php echo $delements->ELEdescription; ?></a>
+                                                        <a style="cursor:pointer; cursor: hand;" onclick="goTipoDispositivo('<?php echo $row['ELEid']; ?>');"><?php echo $row['ELEdescription']; ?></a>
                                                     </li>
                                                 <?php }
                                             }
@@ -337,10 +337,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Administración<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="<?php echo base_url(); ?>index.php/admin/registroDispositivo">Registro de zona (Nuevo dispositivo)</a>
+                                        <a href="<?php echo base_url(); ?>index.php/admin/registroZonas">Registro de zona <br>(Nuevo dispositivo)</a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url(); ?>index.php/admin/registroZonas">Tipos de zonas</a>
+                                        <a href="<?php echo base_url(); ?>index.php/admin/registroTiposZonas">Tipos de zonas</a>
                                     </li>
                                     <li>
                                         <a href="<?php echo base_url(); ?>index.php/admin/registroSalas">Salas del museo</a>
