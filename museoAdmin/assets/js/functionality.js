@@ -45,6 +45,25 @@ var msjeAlerta;
 
 // GESTIÓN DE CONTENIDOS
 
+  function registrarZona(ruta){
+    base_url=ruta;
+    var id = $('#txtIdZona').val();
+    var sala = $('#cboTipoZona').selectedValue();
+    var tipoDispositivo = $('#cboSala').selectedValue();
+    var descripcion = $('#txtDescripcion').val();
+    $.ajax({
+        url: base_url+'index.php/admin/registrarDispositivo',
+        type: 'POST',
+        data: 'id='+id+'&sala='+sala+'&tipoDispositivo='+tipoDispositivo+'&descripcion='+descripcion,
+        success:function(respuesta){
+          alertify.success('Nueva zona registrada');
+          location.reload();
+        },error: function(respuesta){
+            alertify.error('Lo sentimos, no se pueden registrar los datos.');
+        }
+    });
+  }
+  }
 
 
 

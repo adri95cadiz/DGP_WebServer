@@ -45,11 +45,11 @@
                             <?php 
                                 if(isset($salas)){
                                     if($salas){
-                                        foreach ($salas->result() as $dsalas) { 
+                                        foreach ($salas as $row) { 
                                             echo '<tr>';
-                                                echo '<td>'.$dsalas->ROOid.'</td>';
-                                                echo '<td width="20%">'.$dsalas->ROOdescription.'</td>';
-                                                echo '<td>'.$dsalas->ROOstate.'</td>';
+                                                echo '<td>'.$row['ROOid'].'</td>';
+                                                echo '<td width="20%">'.$row['ROOdescription'].'</td>';
+                                                echo '<td>'.$row['ROOstate'].'</td>';
                                                 echo '<td class="center text-center" width="10%">'?>
                                                     <button type="submit" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-pencil"></i> </button>
                                                 <?php 

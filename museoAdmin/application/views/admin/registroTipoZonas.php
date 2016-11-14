@@ -45,11 +45,11 @@
                             <?php 
                                 if(isset($elements)){
                                     if($elements){
-                                        foreach ($elements->result() as $delements) { 
+                                        foreach ($elements as $row) { 
                                             echo '<tr>';
-                                                echo '<td>'.$delements->ELEid.'</td>';
-                                                echo '<td width="20%">'.$delements->ELEdescription.'</td>';
-                                                echo '<td>'.$delements->ELEstate.'</td>';
+                                                echo '<td>'.$row['ELEid'].'</td>';
+                                                echo '<td width="20%">'.$row['ELEdescription'].'</td>';
+                                                echo '<td>'.$row['ELEstate'].'</td>';
                                                 echo '<td class="center text-center" width="10%">'?>
                                                     <button type="submit" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-pencil"></i> </button>
                                                 <?php 

@@ -25,42 +25,53 @@
                     <div class="row">
                         <form class="form-horizontal" role="form">
                             <div class="form-group row">
-                                <label for="txtNFC" class="col-lg-2 control-label">Codigo Generado:</label>
+                                <label for="txtIdZona" class="col-lg-2 control-label">Codigo Generado:</label>
                                 <div class="col-lg-2">
-                                    <input type="text" class="form-control hidden" id="txtNFC" value="<?php echo $nextId; ?>" disabled hidden>
+                                    <input type="text" class="form-control hidden" id="txtIdZona" value="<?php echo $nextId; ?>" disabled hidden>
                                     <p class="form-control-static mb-0"><?php echo $nextId; ?></p>
                                 </div>
                             </div>
                             <div class="row form-group">
-                                    <label class="col-lg-2 control-label">Tipo de Zona:</label>
+                                    <label class="col-lg-2 control-label" for="cboTipoZona">Tipo de Zona:</label>
                                     <div class="col-lg-3">
-                                        <select class="form-control" >
-                                            <option>Vitrina</option>
-                                            <option>Linea de tiempo</option>
+                                        <select class="form-control" id="cboTipoZona">
+                                            <?php 
+                                                if(isset($elements)){
+                                                    if($elements<>0){
+                                                        foreach ($elements as $row) {
+                                                            echo '<option value="'.$row['ELEid'].'">'.$row['ELEdescription'].'</option>';
+                                                        }
+                                                    }
+                                                }
+                                             ?>
                                         </select>
                                     </div>                        
                                 <!-- </div>
                                 <div class="form-group"> -->
-                                    <label class="col-lg-2 control-label">Sala:</label>
+                                    <label class="col-lg-2 control-label" for="cboSala">Sala:</label>
                                     <div class="col-lg-3">
-                                        <select class="form-control" >
-                                            <option>Sala 1</option>
-                                            <option>Sala 2</option>
-                                            <option>Sala 3</option>
-                                            <option>Sala 4</option>
-                                            <option>Sala 5</option>
+                                        <select class="form-control" id="cboSala">
+                                            <?php 
+                                                if(isset($salas)){
+                                                    if($salas<>0){
+                                                        foreach ($salas as $row) {
+                                                            echo '<option value="'.$row['ROOid'].'">'.$row['ROOdescription'].'</option>';
+                                                        }
+                                                    }
+                                                }
+                                             ?>
                                         </select>
                                     </div>
                             </div>
                             <div class="row form-group">
-                                <label for="tituloPanel" class="col-lg-2 control-label">Descripcion de Zona:</label>
+                                <label for="txtDescripcion" class="col-lg-2 control-label">Descripcion de Zona:</label>
                                 <div class="col-lg-8">
-                                    <input type="text" class="form-control" id="tituloPanel">
+                                    <input type="text" class="form-control" id="txtDescripcion">
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col-md-2 col-md-offset-8 text-right">
-                                  <button onClick="openDisability('<?php echo base_url(); ?>')" class="btn btn-success btn-lg btn-circle"><i class="fa fa-plus"></i> 
+                                  <button onClick="registrarZona('<?php echo base_url(); ?>')" class="btn btn-success btn-lg btn-circle"><i class="fa fa-plus"></i> 
                                     </button>
                                 </div>
                             </div>

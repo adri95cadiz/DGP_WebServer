@@ -24,13 +24,21 @@ class Admin extends CI_Controller {
 		$data['dispositivos']=$this->modelZone->getAllZones();
 		$data['nextId']=$this->modelZone->getNextId();
 		$data['salas']=$this->modelRooms->getRooms();
-		$data['tiposZonas']=$this->modelElements->getElements();
 		$this->load->view('header', $data);
 		$this->load->view('informacion/registroDispositivo');
 		$this->load->view('informacion/modalEditarDispositivo');
 		$this->load->view('informacion/modalConfirmacion2');
 		$this->load->view('informacion/modalConfirmacion3');
 		$this->load->view('footer');
+	}
+
+	public function registrarDispositivo(){
+		$id=trim($this->input->post("id"));
+		$sala=trim($this->input->post("sala"));
+		$tipoDispositivo=trim($this->input->post("tipoDispositivo"));
+		$descripcion=trim($this->input->post("descripcion"));
+		$rpta=$this->modelZone->setZone($id, $sala, $tipoDispositivo, $descripcion);
+		echo "";
 	}
 
 	public function tipoDispositivo()

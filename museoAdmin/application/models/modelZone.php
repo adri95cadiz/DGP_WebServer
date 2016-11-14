@@ -55,6 +55,12 @@ class modelZone extends CI_Model {
         return $query;
     }
 
+    public function setZone($id, $sala, $tipoDispositivo, $descripcion){
+        $sql= "call SP_zones(2, '".$id."', '".$descripcion."', '".$sala."', '".$tipoDispositivo."', 'A');";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
 
 }
 ?>
