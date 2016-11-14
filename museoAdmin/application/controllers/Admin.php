@@ -27,7 +27,8 @@ class Admin extends CI_Controller {
 		$this->load->view('header', $data);
 		$this->load->view('informacion/registroDispositivo');
 		$this->load->view('informacion/modalEditarDispositivo');
-		$this->load->view('informacion/modalConfirmacion2');
+		// $this->load->view('informacion/modalConfirmacion2');
+		$this->load->view('informacion/modalConfirmacion');
 		$this->load->view('informacion/modalConfirmacion3');
 		$this->load->view('footer');
 	}
@@ -38,6 +39,12 @@ class Admin extends CI_Controller {
 		$tipoDispositivo=trim($this->input->post("tipoDispositivo"));
 		$descripcion=trim($this->input->post("descripcion"));
 		$rpta=$this->modelZone->setZone($id, $sala, $tipoDispositivo, $descripcion);
+		echo "";
+	}
+
+	public function eliminarDispositivo(){
+		$id=trim($this->input->post("id"));
+		$rpta=$this->modelZone->deleteZone($id);
 		echo "";
 	}
 

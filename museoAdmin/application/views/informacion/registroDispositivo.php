@@ -104,7 +104,7 @@
                                                         <button type="button" class="btn btn-warning btn-circle" onClick="editarDispositivo('<?php echo base_url(); ?>')"><i class="fa fa-pencil"></i></button></td>
                                                     <?php
                                                     echo '<td width="7%" class="center text-center" width="10%">';?>
-                                                        <button type="button" class="btn btn-danger btn-circle" onClick="confirmacionEliminar2('<?php echo base_url(); ?>')"><i class="fa fa-times"></i></button></td>
+                                                        <button type="button" class="btn btn-danger btn-circle" onClick="confEliminarZona('<?php echo base_url(); ?>', '<?php echo $row['ZONid']; ?>')"><i class="fa fa-times"></i></button></td>
                                                     <?php
                                                 echo '</tr>';
                                             }

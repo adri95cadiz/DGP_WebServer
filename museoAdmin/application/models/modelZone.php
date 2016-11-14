@@ -61,6 +61,12 @@ class modelZone extends CI_Model {
         return $query;
     }
 
+    public function deleteZone($id){
+        $sql= "call SP_zones(4, '".$id."', '', '', '', '');";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
 
 }
 ?>

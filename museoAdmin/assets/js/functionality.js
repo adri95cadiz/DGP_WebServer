@@ -48,8 +48,8 @@ var msjeAlerta;
   function registrarZona(ruta){
     base_url=ruta;
     var id = $('#txtIdZona').val();
-    var sala = $('#cboTipoZona').selectedValue();
-    var tipoDispositivo = $('#cboSala').selectedValue();
+    var tipoDispositivo = $('#cboTipoZona').val();
+    var sala = $('#cboSala').val();
     var descripcion = $('#txtDescripcion').val();
     $.ajax({
         url: base_url+'index.php/admin/registrarDispositivo',
@@ -63,7 +63,29 @@ var msjeAlerta;
         }
     });
   }
+
+  function confEliminarZona(ruta, id){
+    base_url=ruta;
+    msjeAlerta='¿Está seguro que desea eliminar la zona seleccionada?';
+    funcion='eliminarZona('+id+')';
+    // La función modalAlerta ejecuta un cuadro de alerta para confirmar antes de hacer algo. 
+    // Se le pasa el mensaje que mostrará y la función que ejecutará al confirmar el modal.
+    modalAlerta(msjeAlerta, funcion);
   }
+
+  function eliminarZona(id){
+    $.ajax({
+        url: base_url+'index.php/admin/eliminarDispositivo',
+        type: 'POST',
+        data: 'id='+id,
+        success:function(respuesta){
+          alertify.success('Zona eliminada');
+          location.reload();
+        },error: function(respuesta){
+            alertify.error('Lo sentimos, no se puede eliminar la zona seleccionada.');
+        }
+    });
+  }  
 
 
 
@@ -86,10 +108,10 @@ var msjeAlerta;
     abrirModal('modalConfirmacion');
   }
 
-  function confirmacionEliminar2(ruta){
-    base_url=ruta;
-    abrirModal('modalConfirmacion2');
-  }
+  // function confirmacionEliminar2(ruta){
+  //   base_url=ruta;
+  //   abrirModal('modalConfirmacion2');
+  // }
 
   function confirmacionEliminar3(ruta){
     base_url=ruta;
