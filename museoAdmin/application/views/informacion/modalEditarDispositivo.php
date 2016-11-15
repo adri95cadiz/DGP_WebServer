@@ -16,44 +16,58 @@
                             <div class="row">
                                 <form role="form" class="form-horizontal">                                    
                                     <div class="form-group ">
-                                        <label for="txtNFCmodal" class="col-lg-3 col-md-3 control-label">Código Dispositivo:</label>
+                                        <label for="txtIdZonaEdit" class="col-lg-3 col-md-3 control-label">Código Dispositivo:</label>
                                         <div class="col-lg-8 col-md-8">
-                                            <input type="text" class="form-control hidden" id="txtNFCmodal" value="" disabled hidden>
-                                            <p class="form-control-static mb-0">0004</p>
+                                            <input type="text" class="form-control hidden" id="txtIdZonaEdit" value="" disabled hidden>
+                                            <p class="form-control-static mb-0" id="textIdZonaEdit"></p>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="txtDescripcionModal" class="col-lg-3 col-md-3 control-label">Descripción:</label>
+                                        <label for="txtDescripcionEdit" class="col-lg-3 col-md-3 control-label">Descripción:</label>
                                         <div class="col-lg-8 col-md-8">
-                                          <input type="text" class="form-control" id="txtDescripcionModal">
+                                          <input type="text" class="form-control" id="txtDescripcionEdit">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="cboTipoIdentificadorModal" class="col-lg-3 col-md-3 control-label">Tipo Identificador:</label>
+                                        <label for="cboTipoZonaEdit" class="col-lg-3 col-md-3 control-label">Tipo de Zona:</label>
                                         <div class="col-lg-8 col-md-8">
-                                            <select class="form-control" id="cboTipoIdentificadorModal">
-                                                <option>Vitrina</option>
-                                                <option>Linea de tiempo</option>
-                                            </select>
+                                            <select class="form-control" id="cboTipoZonaEdit">
+                                            <?php 
+                                                if(isset($elements)){
+                                                    if($elements<>0){
+                                                        foreach ($elements as $row) {
+                                                            echo '<option value="'.$row['ELEid'].'">'.$row['ELEdescription'].'</option>';
+                                                        }
+                                                    }
+                                                }
+                                             ?>
+                                        </select>
                                         </div>                        
                                     </div>
                                     <div class="form-group">
-                                        <label for="cboSalaModal" class="col-lg-3 col-md-3 control-label" >Sala:</label>
+                                        <label for="cboSalaEdit" class="col-lg-3 col-md-3 control-label" >Sala:</label>
                                         <div class="col-lg-8 col-md-8">
-                                            <select class="form-control" id="cboSalaModal">
-                                                <option>Sala 1</option>
-                                                <option>Sala 2</option>
-                                            </select>
+                                            <select class="form-control" id="cboSalaEdit">
+                                            <?php 
+                                                if(isset($salas)){
+                                                    if($salas<>0){
+                                                        foreach ($salas as $row) {
+                                                            echo '<option value="'.$row['ROOid'].'">'.$row['ROOdescription'].'</option>';
+                                                        }
+                                                    }
+                                                }
+                                             ?>
+                                        </select>
                                         </div>                        
                                     </div>
                                     <div class="form-group">
                                         <label class="col-lg-3 col-md-3 control-label">Estado:</label>
                                         <div class="col-lg-7 col-md-7">
                                             <label class="radio-inline">
-                                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="A" checked>Activo
+                                                <input type="radio" name="rbEstadoEdit" id="rbEstadoA" value="A" checked>Activo
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="I">Inactivo
+                                                <input type="radio" name="rbEstadoEdit" id="rbEstadoI" value="I">Inactivo
                                             </label>
                                         </div>                        
                                     </div>
@@ -62,13 +76,13 @@
                             <br>
                             <div class="row">
                                 <div class="col-md-3 col-md-offset-2">
-                                    <button class="btn btn-block btn-default" onClick="">Eliminar</button> 
+                                    <button class="btn btn-block btn-default" data-dismiss="modal">CANCELAR</button> 
                                 </div>
-                                <div class="col-md-3 col-md-offset-2">
-                                    <button class="btn btn-block btn-success" onClick=""data-dismiss="modal">Cancelar</button> 
+                                <div class="col-md-4 col-md-offset-1">
+                                    <button class="btn btn-block btn-success" onClick="editarZona('<?php echo base_url(); ?>');">GUARDAR CAMBIOS</button> 
                                 </div>
                             </div>
-
+                            <br>
                             <!-- FIN CONTENIDO DE MODAL -->
                         </div>
 

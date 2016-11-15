@@ -27,9 +27,9 @@ class Admin extends CI_Controller {
 		$this->load->view('header', $data);
 		$this->load->view('informacion/registroDispositivo');
 		$this->load->view('informacion/modalEditarDispositivo');
-		// $this->load->view('informacion/modalConfirmacion2');
+		// $this->load->view('informacion/modalConfirmacion3');
 		$this->load->view('informacion/modalConfirmacion');
-		$this->load->view('informacion/modalConfirmacion3');
+		$this->load->view('informacion/modalConfirmacion2');
 		$this->load->view('footer');
 	}
 
@@ -45,6 +45,29 @@ class Admin extends CI_Controller {
 	public function eliminarDispositivo(){
 		$id=trim($this->input->post("id"));
 		$rpta=$this->modelZone->deleteZone($id);
+		echo "";
+	}
+
+	public function verificarMultimedia(){
+		$id=trim($this->input->post("id"));
+		$rpta=$this->modelZone->verificarMultimedia($id);
+		if($rpta->num_rows()>0){
+			foreach ($rpta->result() as $row) {
+			 	$rpta=$row->rpta;
+			}
+			echo $rpta;
+		}else{
+			echo $rpta;
+		}
+	}
+
+	public function editarDispositivo(){
+		$id=trim($this->input->post("id"));
+		$descripcion=trim($this->input->post("descripcion"));
+		$tipoZona=trim($this->input->post("tipoZona"));
+		$sala=trim($this->input->post("sala"));
+		$estado=trim($this->input->post("estado"));
+		$rpta=$this->modelZone->editarZone($id, $descripcion, $tipoZona, $sala, $estado);
 		echo "";
 	}
 

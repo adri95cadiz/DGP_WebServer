@@ -67,6 +67,17 @@ class modelZone extends CI_Model {
         return $query;
     }
 
+    public function verificarMultimedia($id){
+        $sql= "call SP_zones(8, '".$id."', '', '', '', '');";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+    public function editarZone($id, $descripcion, $tipoZona, $sala, $estado){
+        $sql= "call SP_zones(3, '".$id."', '".$descripcion."', '".$sala."', '".$tipoZona."', '".$estado."');";
+        $query = $this->db->query($sql);
+        return $query;
+    }
 
 }
 ?>
