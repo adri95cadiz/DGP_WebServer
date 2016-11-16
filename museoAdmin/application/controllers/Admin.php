@@ -76,12 +76,16 @@ class Admin extends CI_Controller {
 		$data['elements']=$this->modelElements->getElements();
 		$data['ELEid']=trim($this->input->post("ELEid"));
 		$data['ELEdescription']=trim($this->input->post("ELEdescription"));
-		$data['zones']=$this->modelZone->getZonesByType($data['ELEid']);
-		$this->load->view('header', $data);
-		$this->load->view('informacion/listarDispositivos');
-		$this->load->view('informacion/modalConfirmacion2');
-		$this->load->view('informacion/modalConfirmacion3');
-		$this->load->view('footer');
+		if($data['ELEid']==''){
+			redirect(base_url());
+		}else{
+			$data['zones']=$this->modelZone->getZonesByType($data['ELEid']);
+			$this->load->view('header', $data);
+			$this->load->view('informacion/listarDispositivos');
+			$this->load->view('informacion/modalConfirmacion');
+			$this->load->view('informacion/modalConfirmacion2');
+			$this->load->view('footer');
+		}
 	}
 
 	public function registroTiposZonas()

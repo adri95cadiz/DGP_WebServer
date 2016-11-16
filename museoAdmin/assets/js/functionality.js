@@ -97,7 +97,6 @@ var msjeAlerta;
     });
   }
 
-
   function eliminarZona(id){
     $.ajax({
         url: base_url+'index.php/admin/eliminarDispositivo',
@@ -147,6 +146,9 @@ var msjeAlerta;
         }
     });
   }
+
+
+
 
 
 // MODALES
