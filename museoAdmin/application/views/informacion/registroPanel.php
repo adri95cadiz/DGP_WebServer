@@ -37,7 +37,8 @@
                                     <i class="fa fa-angle-double-right"></i> <b>Código:</b> <?php echo $ZONid; ?>
                                 </div>
                                 <div class="col-lg-9 col-md-8 col-sm-12">
-                                    <i class="fa fa-angle-double-right"></i> <b>Tipo de zona: </b> <?php echo $ELEdescription; ?>
+                                    <i class="fa fa-angle-double-right"></i> <b>
+                                     de zona: </b> <?php echo $ELEdescription; ?>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <i class="fa fa-angle-double-right"></i> <b>Descripción: </b> <?php echo $ZONdescription; ?>
@@ -46,10 +47,11 @@
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
                         <br>
-                        <form role="form" method="POST" id="frmEdit-1" class="form-horizontal" action="<?php echo base_url();?>index.php/admin/registroDetallePanel" >
+                        <form role="form" method="POST" id="frmRegistroPanel" class="form-horizontal" action="<?php echo base_url();?>index.php/admin/registroDetallePanel">
                             <input type="text" name="ZONid" value="<?php echo $ZONid; ?>" hidden>
-                            <input type="text" name="PANid" value="0" hidden>
-                            <button type="submit" onClick="" class="btn btn-block btn-success btn.lg"><i class="fa fa-plus"></i> &nbsp <big><b>Agregar panel </b></big></button>
+                            <input type="text" name="ELEid" value="<?php echo $ELEid; ?>" hidden>
+                            <input type="text" name="PANid" id="PANid"  hidden>
+                            <button onClick="registrarPanel('<?php echo base_url(); ?>', '<?php echo $ZONid; ?>');" class="btn btn-block btn-success btn.lg"><i class="fa fa-plus"></i> &nbsp <big><b>Agregar panel </b></big></button>
                         </form>
                     </div>
                     <div class="clearfix"></div>

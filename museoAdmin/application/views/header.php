@@ -58,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 
 
-<body>
+<body onload="nobackbutton('<?php echo base_url(); ?>')" onUnLoad="verificarPaginas('<?php echo base_url(); ?>')">
 
     <div id="wrapper">
 

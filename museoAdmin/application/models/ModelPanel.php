@@ -9,27 +9,21 @@ class ModelPanel extends CI_Model {
         parent::__construct();
     }
 
-	// public function setCaracteristicas($data){
- //        $sql= "call SP_setHojaCaract('".$data['usuario']."', '".$data['cod']."', '".$data['mision']."', 
- //            '".$data['empieza']."', '".$data['incluye']."', '".$data['termina']."', '".$data['proveedor']."', 
- //            '".$data['cliente']."', '".$data['entrada']."', '".$data['salida']."', '".$data['inspecciones']."', 
- //            '".$data['registros']."', '".$data['variables']."', '".$data['indicadores']."');";
- //        $query = $this->db->simple_query($sql);
- //        return $query;
- //    }
-
-    public function getZones(){
-        $sql= "select * from zone;";
+    public function setPanel($ZONid){
+        $sql= "call SP_panels(2, '', '".$ZONid."', '', '');";
         $query = $this->db->query($sql);
-        return $query;
+        $sql= "call SP_panels(5, '', '', '', '');";
+        $query = $this->db->query($sql);
+        $rpta='0';
+        foreach ($query->result() as $row) {
+            $rpta=$row->newPANid;
+        }
+        return $rpta;
+        // return $query;
     }
 
-    public function getZonesByType($type){
-        $sql= "select * from zone Z inner join room R on Z.ROOid=R.ROOid where ELEid='".$type."' and ZONstate='A';";
-        $query = $this->db->query($sql);
-        return $query;
-    }
 
+    
 
 }
 ?>

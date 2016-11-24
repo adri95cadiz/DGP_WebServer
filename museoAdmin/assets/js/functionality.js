@@ -1,6 +1,22 @@
 var base_url;
 var msjeAlerta;
 
+//Función para inhabilitar el botón atrás. 
+function nobackbutton(base_url){ 
+  window.location.hash="no-back-button";
+  window.location.hash="Again-No-back-button" //chrome
+  window.onhashchange=function(){window.location.hash="no-back-button";}
+  // if(window.history == base_url+"index.php/admin/tipoDispositivo"){
+  //   window.location.href=base_url+'index.php/admin';
+  // }
+}
+
+function verificarPaginas(base_url){
+  if(window.history == base_url+"index.php/admin/tipoDispositivo"){
+    window.location.href=base_url+'index.php/admin';
+  }
+}
+
 // NECESIDADES ESPECIALES
   function registrarNecesidad(ruta){
     base_url=ruta;
@@ -143,6 +159,73 @@ var msjeAlerta;
           location.reload();
         },error: function(respuesta){
           alertify.error('Lo sentimos, los datos no pueden ser actualizados.');
+        }
+    });
+  }
+
+  function registrarPanel(ruta, ZONid){
+    base_url=ruta;
+    $.ajax({
+        url: base_url+'index.php/admin/registrarPanel',
+        type: 'POST',
+        data: 'ZONid='+ZONid,
+        success:function(respuesta){
+          $('#PANid').val(respuesta);
+          alertify.success('Nuevo panel registrado');
+          document.forms['frmRegistroPanel'].submit();
+        },error: function(respuesta){
+          alertify.error('No se puede registrar un nuevo panel en la zona indicada.');
+        }
+    });
+  }
+
+
+  function seleccionarIdioma(ruta){
+    base_url=ruta;
+    var idioma = $('#cboIdioma option:selected').html();
+    var LANid = $('#cboIdioma').val();
+    $('#idiomaSeleccionadoTittle').text(idioma);
+    // getPanelByLanguage(LANid);
+  }
+
+  function getPanelByLanguage(LANid){
+    var zone = $('#txtZONid').val();
+    var panel = $('#txtPANid').val();
+    $.ajax({
+        url: base_url+'index.php/admin/getPanelByLanguage',
+        type: 'POST',
+        data: 'LANid='+LANid+'&zone='+zone+'&panel='+panel,
+        dataType: 'json',
+        success:function(respuesta){
+          // alertify.success('Datos actualizados satisfactoriamente');
+          // location.reload();
+          $.each(respuesta, function(key){
+              titulo = respuesta[key].titulo;
+              subtitulo = respuesta[key].subtitulo;
+              descripcion = respuesta[key].descripcion;
+          });
+          $('#txtTitulo').val(titulo);
+          $('#txtSubtitulo').val(subtitulo);
+          $('#txtDescripcion').val(descripcion);
+        },error: function(respuesta){
+          alertify.error('Lo sentimos, los datos no pueden ser actualizados.');
+        }
+    });
+  }
+
+  function guardarDetallePanel(ruta, ZONid, PANid){
+    LANid = $('#cboIdioma').val();
+    titulo = $('#txtTitulo').val();
+    subtitulo = $('#txtSubtitulo').val();
+    descripcion = $('#txtDescripcion').val();
+    $.ajax({
+        url: base_url+'index.php/admin/registrarPanelDetalle',
+        type: 'POST',
+        data: 'ZONid='+ZONid+'&PANid='+PANid+'&LANid='+LANid+'&titulo='+titulo+'&subtitulo='+subtitulo+'&contenido='+contenido,
+        success:function(respuesta){
+          alertify.success('Información de panel registrada satisfactoriamente');
+        },error: function(respuesta){
+          alertify.error('Hubo un error al grabar los datos');
         }
     });
   }
