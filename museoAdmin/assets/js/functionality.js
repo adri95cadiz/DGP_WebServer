@@ -219,7 +219,7 @@ function verificarPaginas(base_url){
     subtitulo = $('#txtSubtitulo').val();
     descripcion = $('#txtDescripcion').val();
     $.ajax({
-        url: base_url+'index.php/admin/registrarPanelDetalle',
+        url: base_url+'index.php/admin/registrarDetallePanel',
         type: 'POST',
         data: 'ZONid='+ZONid+'&PANid='+PANid+'&LANid='+LANid+'&titulo='+titulo+'&subtitulo='+subtitulo+'&contenido='+contenido,
         success:function(respuesta){

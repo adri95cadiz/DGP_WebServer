@@ -177,6 +177,17 @@ class Admin extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	public function registrarDetallePanel(){
+		$ZONid=trim($this->input->post("ZONid"));
+		$PANid=trim($this->input->post("PANid"));
+		$LANid=trim($this->input->post("LANid"));
+		$titulo=trim($this->input->post("titulo"));
+		$subtitulo=trim($this->input->post("subtitulo"));
+		$contenido=trim($this->input->post("contenido"));
+		$rpta=$this->modelPanelDescription->getLanguages();
+
+	}
+
 	public function registroSalas()
 	{
 		$data['salas']=$this->modelRooms->getRooms();
