@@ -103,7 +103,7 @@ class Admin extends CI_Controller {
 	public function idiomas()
 	{
 		$data['elements']=$this->modelElements->getElements();
-		$data['idiomas']=$this->modelLanguages->getLanguages();
+		$data['idiomas']=$this->modelLanguages->getAllLanguages();
 		$this->load->view('header', $data);
 		$this->load->view('admin/registroIdiomas');
 		$this->load->view('footer');
@@ -184,12 +184,13 @@ class Admin extends CI_Controller {
 		$titulo=trim($this->input->post("titulo"));
 		$subtitulo=trim($this->input->post("subtitulo"));
 		$contenido=trim($this->input->post("contenido"));
-		$rpta=$this->modelPanelDescription->getLanguages();
-
+		$rpta=$this->modelPanelDesc->setPanelDesc($ZONid, $PANid, $LANid, $titulo, $subtitulo, $contenido);
+		echo $contenido;
 	}
 
 	public function registroSalas()
 	{
+		$data['elements']=$this->modelElements->getElements();
 		$data['salas']=$this->modelRooms->getRooms();
 		$this->load->view('header', $data);
 		$this->load->view('admin/registroSalas');

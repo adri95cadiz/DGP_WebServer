@@ -214,10 +214,11 @@ function verificarPaginas(base_url){
   }
 
   function guardarDetallePanel(ruta, ZONid, PANid){
+    base_url=ruta;
     LANid = $('#cboIdioma').val();
     titulo = $('#txtTitulo').val();
     subtitulo = $('#txtSubtitulo').val();
-    descripcion = $('#txtDescripcion').val();
+    contenido = $('#txtDescripcion').val();
     $.ajax({
         url: base_url+'index.php/admin/registrarDetallePanel',
         type: 'POST',
