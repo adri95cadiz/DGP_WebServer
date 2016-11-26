@@ -11,7 +11,7 @@ class ModelFeatures extends CI_Model {
 
     public function getFeatures(){
         $sql= "call SP_features(1, '', '', '');";
-        $query = $this->db->query($sql);
+        $query = $this->modelZone->async_query($sql);
         return $query;
     }
 

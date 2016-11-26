@@ -15,9 +15,9 @@ class ModelPanelDesc extends CI_Model {
         return $query;
     }
 
-    public function getPanelDesc($ZONid, $PANid, $LANid){
-        $sql= "call SP_panelDesc(1, '".$PANid."', '".$ZONid."', '".$LANid."', '', '', '', '');";
-        $query = $this->db->query($sql);
+    public function getPaneles($ZONid){
+        $sql= "call SP_panelDesc(3, '', '".$ZONid."', '1', '', '', '', '');";
+        $query = $this->modelZone->async_query($sql);
         return $query;
     }
 

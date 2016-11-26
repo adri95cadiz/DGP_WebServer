@@ -2,11 +2,11 @@
         <?php 
         if(isset($dispositivo)){
             if($dispositivo){
-                foreach ($dispositivo->result() as $ddispositivo) {
-                    $ELEid=$ddispositivo->ELEid;
-                    $ELEdescription=$ddispositivo->ELEdescription;
-                    $ZONid=$ddispositivo->ZONid;
-                    $ZONdescription=$ddispositivo->ZONdescription;
+                foreach ($dispositivo as $row) {
+                    $ELEid=$row['ELEid'];
+                    $ELEdescription=$row['ELEdescription'];
+                    $ZONid=$row['ZONid'];
+                    $ZONdescription=$row['ZONdescription'];
                 }
             }
         } ?>

@@ -22,7 +22,6 @@ class ModelPanel extends CI_Model {
         // return $query;
     }
 
-
     
 
 }

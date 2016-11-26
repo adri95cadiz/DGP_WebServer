@@ -2,10 +2,10 @@
         <?php 
         if(isset($dispositivo)){
             if($dispositivo){
-                foreach ($dispositivo->result() as $ddispositivo) {
-                    $ELEdescription=$ddispositivo->ELEdescription;
-                    $ZONdescription=$ddispositivo->ZONdescription;
-                    $ELEid=$ddispositivo->ELEid;
+                foreach ($dispositivo as $row) {
+                    $ELEdescription=$row['ELEdescription'];
+                    $ZONdescription=$row['ZONdescription'];
+                    $ELEid=$row['ELEid'];
                 }
             }
         } ?>
@@ -30,7 +30,7 @@
                         <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <big>
-                                    <b><p>Datos de dispositivo:</p></b>
+                                    <b><p>Datos de la zona:</p></b>
                                     </big>
                                 </div>
                                 <div class="col-lg-3 col-md-4 col-sm-12">
@@ -60,7 +60,7 @@
                 <div class="row">      
                     <div class="panel panel-default">
                         <div class="col-md-12 panel-heading">
-                            <big><label class="panel-title ">Paneles asociados a este dispositivo</label></big>
+                            <big><label class="panel-title ">Paneles asociados a esta zona</label></big>
                         </div>
                         <div class="panel-body">
                             <br>
@@ -75,58 +75,39 @@
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  <tr>
-                                    <td>1</td>
-                                    <td>1942</td>
-                                    <td>El tractor moderniza el campo</td>
-                                    <td>
-                                        <form role="form" method="POST" id="frmEdit-1" class="form-horizontal" action="<?php echo base_url();?>index.php/admin/registroDetallePanel" >
-                                            <!-- <input type="text" name="txtZONid" text="<?php //echo $dzones->ZONid; ?>" hidden>
-                                            <input type="text" name="PANidtxt" text="<?php //echo $dzones->PANid; ?>" hidden> -->
-                                            <input type="text" name="txtZONid" value="1" hidden>
-                                            <input type="text" name="txtPANid" value="1" hidden>
-                                            <button type="submit" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-pencil"></i> </button>
-                                        </form>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger btn-circle" onClick="confirmacionEliminar('<?php echo base_url(); ?>')"><i class="fa fa-times"></i></button>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>2</td>
-                                    <td>1967</td>
-                                    <td>Fundación de los sindicatos democráticos de estudiantes</td>
-                                    <td>
-                                        <form role="form" method="POST" id="frmEdit-2" class="form-horizontal" action="<?php echo base_url();?>index.php/admin/registroDetallePanel" >
-                                            <!-- <input type="text" name="txtZONid" text="<?php //echo $dzones->ZONid; ?>" hidden>
-                                            <input type="text" name="PANidtxt" text="<?php //echo $dzones->PANid; ?>" hidden> -->
-                                            <input type="text" name="txtZONid" text="1" hidden>
-                                            <input type="text" name="txtPANid" text="1" hidden>
-                                            <button type="submit" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-pencil"></i> </button>
-                                        </form>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger btn-circle" onClick="confirmacionEliminar('<?php echo base_url(); ?>')"><i class="fa fa-times"></i></button>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>3</td>
-                                    <td>1979 hasta 1982</td>
-                                    <td>Crisis económica</td>
-                                    <td>
-                                        <form role="form" method="POST" id="frmEdit-3" class="form-horizontal" action="<?php echo base_url();?>index.php/admin/registroDetallePanel" >
-                                            <!-- <input type="text" name="txtZONid" text="<?php //echo $dzones->ZONid; ?>" hidden>
-                                            <input type="text" name="PANidtxt" text="<?php //echo $dzones->PANid; ?>" hidden> -->
-                    
-                                            <input type="text" name="txtZONid" text="1" hidden>
-                                            <input type="text" name="txtPANid" text="1" hidden>
-                                            <button type="submit" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-pencil"></i> </button>
-                                        </form>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger btn-circle" onClick="confirmacionEliminar('<?php echo base_url(); ?>')"><i class="fa fa-times"></i></button>
-                                    </td>
-                                  </tr>
+                                <?php 
+                                    if(isset($paneles)){
+                                        if($paneles){
+                                            foreach ($paneles as $row) {
+                                                $flag=$row['PANid'];
+                                                if($flag!='0'){ ?>
+                                                    <tr>
+                                                        <td><?php echo $row['PANorder'] ?></td>
+                                                        <td><?php echo $row['PDEtitle'] ?></td>
+                                                        <td><?php echo $row['PDEsubTitle'] ?></td>
+                                                        <td>
+                                                            <form role="form" method="POST" id="frmEdit-1" class="form-horizontal" action="<?php echo base_url();?>index.php/admin/registroDetallePanel" >
+                                                                <input type="text" name="txtZONid" text="<?php echo $row['ZONid']; ?>" hidden>
+                                                                <input type="text" name="PANidtxt" text="<?php echo $row['PANid']; ?>" hidden>
+                                                                <button type="submit" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-pencil"></i> </button>
+                                                            </form>
+                                                        </td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-danger btn-circle" onClick="confirmacionEliminar('<?php echo base_url(); ?>')"><i class="fa fa-times"></i></button>
+                                                        </td>
+                                                      </tr>
+                                                <?php
+                                                }else{
+                                                    echo '<tr><td colspan="5"><p>No se ha indicado en que idioma mostrar la información de los paneles.</p></td></tr>';
+                                                    break;
+                                                }
+                                            }
+                                        }else{?>
+                                            <tr><td colspan="5"><p>No hay paneles registrados en esta zona.</p></td></tr>
+                                        <?php
+                                        }
+                                    } 
+                                ?>
                                 </tbody>
                             </table>       
                         </div>

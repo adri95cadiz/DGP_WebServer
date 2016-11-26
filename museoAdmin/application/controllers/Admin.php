@@ -145,8 +145,7 @@ class Admin extends CI_Controller {
 		$data['elements']=$this->modelElements->getElements();
 		$data['ZONid']=trim($this->input->post("txtZONid"));
 		$data['dispositivo']=$this->modelZone->getDispositivo($data['ZONid']);
-		// $data['ELEid']=trim($this->input->post("ELEid"));
-		// $data['ELEdescription']=trim($this->input->post("ELEdescription"));
+		$data['paneles']=$this->modelPanelDesc->getPaneles($data['ZONid']);
 		$this->load->view('header', $data);
 		$this->load->view('informacion/registroPanel');
 		$this->load->view('footer');
@@ -170,6 +169,7 @@ class Admin extends CI_Controller {
 		$data['PANid']=trim($this->input->post("PANid"));
 		$data['dispositivo']=$this->modelZone->getDispositivo($data['ZONid']);
 		$data['idiomas']=$this->modelLanguages->getLanguages();
+		$data['necesidades']=$this->modelFeatures->getFeatures();
 		$this->load->view('header', $data);
 		$this->load->view('informacion/registroDetallePanel');
 		$this->load->view('informacion/modalFeatures');
@@ -187,6 +187,62 @@ class Admin extends CI_Controller {
 		$rpta=$this->modelPanelDesc->setPanelDesc($ZONid, $PANid, $LANid, $titulo, $subtitulo, $contenido);
 		echo $contenido;
 	}
+
+	public function uploadMultimedia(){
+	    $status = "";
+	    $msg = "";
+		$ZONid=trim($this->input->post("ZONid"));
+		$PANid=trim($this->input->post("PANid"));
+		$LANid=trim($this->input->post("LANid"));
+	    $fileName = 'fileMultimedia';
+	    $ruta = base_url().'files/';
+	     
+	    // if (empty($_POST['title']))
+	    // {
+	    //     $status = "error";
+	    //     $msg = "Please enter a title";
+	    // }
+	     
+	    // if ($status != "error")
+	    // {
+	        $config['upload_path'] = $ruta;
+	        $config['allowed_types'] = 'avi|mpg|mp3';
+	        $config['max_size'] = 1024 * 10;
+	        $config['encrypt_name'] = TRUE;
+	 
+	        $this->load->library('upload', $config);
+	 
+	        if (!$this->upload->do_upload($fileName))
+	        {
+	            $status = 'error';
+	            $msg = $this->upload->display_errors('', '');
+	        }
+	        else
+	        {
+	            $data = $this->upload->data();
+	            //Guardar la referencia al archivo en la BD
+	            $file_id = $this->files_model->saveFile($data['file_name']);
+	            if($file_id)
+	            {
+	                $status = "success";
+	                $msg = "File successfully uploaded";
+	            }
+	            else
+	            {
+	                unlink($data['full_path']);
+	                $status = "error";
+	                $msg = "Something went wrong when saving the file, please try again.";
+	            }
+	        }
+	        @unlink($_FILES[$fileName]);
+	    // }
+	    echo json_encode(array('status' => $status, 'msg' => $msg));
+	}
+
+
+
+
+
 
 	public function registroSalas()
 	{

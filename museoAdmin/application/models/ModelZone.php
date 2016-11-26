@@ -39,7 +39,7 @@ class ModelZone extends CI_Model {
     public function getDispositivo($ZONid)
     {
         $sql= "call SP_zones(5, '".$ZONid."', '', '', '', '');";
-        $query = $this->db->query($sql);
+        $query = $this->async_query($sql);
         return $query;
     }
 
