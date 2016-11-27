@@ -17,7 +17,7 @@
                         <div class="row form-group">
                             <label for="multimediaPanel" class="col-lg-4 col-md-5 control-label">Archivo multimedia:</label>
                             <div class="col-lg-8 col-md-7">
-                              <input type="file" name="fileMultimedia" class="fileControl">
+                              <input type="file" name="fileMultimedia" id="fileMultimedia" class="fileControl">
                             </div>
                         </div>
                         <div class="row form-group">
@@ -29,7 +29,7 @@
                                             foreach ($necesidades as $row) { ?>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox"  value="<?php echo $row['FEAid'] ?>"><?php echo $row['FEAdescription'] ?>
+                                                        <input type="checkbox" value="<?php echo $row['FEAid'] ?>"><?php echo $row['FEAdescription'] ?>
                                                     </label>
                                                 </div>
                                             <?php
@@ -44,7 +44,7 @@
                                 <button class="btn btn-block btn-info" onClick=""data-dismiss="modal">Cancelar</button> 
                             </div>
                             <div class="col-md-3 col-md-offset-2">
-                                <button class="btn btn-block btn-primary" onClick="">Añadir</button> 
+                                <button class="btn btn-block btn-primary" onClick="guardarArchivo('<?php echo base_url(); ?>');">Añadir</button> 
                             </div>
                         </div>
 

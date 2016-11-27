@@ -21,6 +21,13 @@ class ModelPanelDesc extends CI_Model {
         return $query;
     }
 
+    public function getPanelDesc($zona, $panel, $idioma){
+        $sql= "call SP_panelDesc(1, '".$panel."', '".$zona."', '".$idioma."', '', '', '', '');";
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
+
+
 
     
 

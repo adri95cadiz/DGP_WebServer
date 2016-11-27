@@ -50,7 +50,7 @@
                         <form role="form" method="POST" id="frmRegistroPanel" class="form-horizontal" action="<?php echo base_url();?>index.php/admin/registroDetallePanel">
                             <input type="text" name="ZONid" value="<?php echo $ZONid; ?>" hidden>
                             <input type="text" name="ELEid" value="<?php echo $ELEid; ?>" hidden>
-                            <input type="text" name="PANid" id="PANid"  hidden>
+                            <input type="text" name="PANid" id="PANidForm" value="<?php echo $PANid; ?>" hidden>
                             <button onClick="registrarPanel('<?php echo base_url(); ?>', '<?php echo $ZONid; ?>');" class="btn btn-block btn-success btn.lg"><i class="fa fa-plus"></i> &nbsp <big><b>Agregar panel </b></big></button>
                         </form>
                     </div>
@@ -86,9 +86,10 @@
                                                         <td><?php echo $row['PDEtitle'] ?></td>
                                                         <td><?php echo $row['PDEsubTitle'] ?></td>
                                                         <td>
-                                                            <form role="form" method="POST" id="frmEdit-1" class="form-horizontal" action="<?php echo base_url();?>index.php/admin/registroDetallePanel" >
-                                                                <input type="text" name="txtZONid" text="<?php echo $row['ZONid']; ?>" hidden>
-                                                                <input type="text" name="PANidtxt" text="<?php echo $row['PANid']; ?>" hidden>
+                                                            <form role="form" method="POST" id="frmEditPanel" class="form-horizontal" action="<?php echo base_url();?>index.php/admin/registroDetallePanel" >
+                                                                <input type="text" name="ELEid" value="<?php echo $ELEid; ?>" hidden>
+                                                                <input type="text" name="ZONid" value="<?php echo $row['ZONid']; ?>" hidden>
+                                                                <input type="text" name="PANid" value="<?php echo $row['PANid']; ?>" hidden>
                                                                 <button type="submit" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-pencil"></i> </button>
                                                             </form>
                                                         </td>

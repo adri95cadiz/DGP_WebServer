@@ -45,7 +45,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- JS PROPIOS-->
         <script src="<?php echo base_url(); ?>assets/js/functionality.js"></script>
 
-
     <!-- /OPCIONALES -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

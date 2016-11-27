@@ -69,7 +69,7 @@
                                     <div class="form-group">
                                         <label class="col-lg-4 col-md-5 col-sm-5 col-xs-12 control-label">Idioma:</label>
                                         <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
-                                            <select class="form-control" id="cboIdioma" onchange="seleccionarIdioma('<?php echo base_url(); ?>');">
+                                            <select class="form-control" id="cboIdioma" onload="seleccionarIdioma('<?php echo base_url(); ?>');" onchange="seleccionarIdioma('<?php echo base_url(); ?>');">
                                                 <?php 
                                                     $idioma=' -- Seleccionar idioma -- ';
                                                     if(isset($idiomas)){
@@ -123,6 +123,11 @@
                                                 </div>
                                             </div>
                                         </form>
+                                    </div>
+                                    <div class="row">   
+                                        <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12 col-lg-offset-9 col-md-offset-8 col-sm-offset-7">
+                                            <button id="btnGuardarDetallePanel" class="btn btn-success btn-lg" onclick="guardarDetallePanel('<?php echo base_url(); ?>', '<?php echo $ZONid; ?>', '<?php echo $PANid; ?>');">GUARDAR CAMBIOS</button>
+                                        </div>
                                     </div>
                                     <br>
                                     <div class="row">
@@ -180,11 +185,6 @@
                                         </div>
                                     </div>
                                     <br>
-                                    <div class="row">   
-                                        <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12 col-lg-offset-9 col-md-offset-9 col-sm-offset-7">
-                                            <button id="btnGuardarDetallePanel" class="btn btn-success btn-lg" onclick="guardarDetallePanel('<?php echo base_url(); ?>', '<?php echo $ZONid; ?>', '<?php echo $PANid; ?>');">GUARDAR CAMBIOS</button>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>

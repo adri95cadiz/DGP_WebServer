@@ -144,21 +144,19 @@ class Admin extends CI_Controller {
 	{
 		$data['elements']=$this->modelElements->getElements();
 		$data['ZONid']=trim($this->input->post("txtZONid"));
+		$data['PANid']= $this->modelPanel->getNextPanelId($data['ZONid']);
 		$data['dispositivo']=$this->modelZone->getDispositivo($data['ZONid']);
 		$data['paneles']=$this->modelPanelDesc->getPaneles($data['ZONid']);
 		$this->load->view('header', $data);
 		$this->load->view('informacion/registroPanel');
 		$this->load->view('footer');
+		echo $data['PANid'];
 	}
 
 	public function registrarPanel(){
 		$data['ZONid']=trim($this->input->post("ZONid"));
 		$rpta=$this->modelPanel->setPanel($data['ZONid']);
-        // foreach ($rpta->result() as $row) {
-        //     $rpta=$row->newPANid;
-        // }
 		echo $rpta;
-		// var_dump($rpta);
 	}
 
 	public function registroDetallePanel()
@@ -189,55 +187,76 @@ class Admin extends CI_Controller {
 	}
 
 	public function uploadMultimedia(){
-	    $status = "";
+		$status = "";
 	    $msg = "";
-		$ZONid=trim($this->input->post("ZONid"));
-		$PANid=trim($this->input->post("PANid"));
-		$LANid=trim($this->input->post("LANid"));
-	    $fileName = 'fileMultimedia';
-	    $ruta = base_url().'files/';
-	     
-	    // if (empty($_POST['title']))
-	    // {
-	    //     $status = "error";
-	    //     $msg = "Please enter a title";
-	    // }
-	     
-	    // if ($status != "error")
-	    // {
-	        $config['upload_path'] = $ruta;
-	        $config['allowed_types'] = 'avi|mpg|mp3';
-	        $config['max_size'] = 1024 * 10;
-	        $config['encrypt_name'] = TRUE;
-	 
-	        $this->load->library('upload', $config);
-	 
-	        if (!$this->upload->do_upload($fileName))
-	        {
-	            $status = 'error';
-	            $msg = $this->upload->display_errors('', '');
-	        }
-	        else
-	        {
-	            $data = $this->upload->data();
-	            //Guardar la referencia al archivo en la BD
-	            $file_id = $this->files_model->saveFile($data['file_name']);
-	            if($file_id)
-	            {
+		$ruta="./assets/files";
+		if ( ! empty($_FILES))
+		{
+			$zona=trim($this->input->post("zona"));
+			$panel=trim($this->input->post("panel"));
+			$idioma=trim($this->input->post("idioma"));
+			$codImagen=$this->modelMultimedia->getNextCod($zona, $panel, $idioma);
+			if($codImagen!='0'){
+				// $fileName=$zona.'_'.$panel.'_'.$idioma.'_'.$codImagen;		//Solo en el 
+				//Parámetros para registrar el archivo
+				$config['upload_path'] = $ruta;
+				$config['allowed_types'] = 'gif|jpg|png|mp4|ogv';
+				$config['max_size'] = 1024 * 10;
+				$config['remove_spaces'] = true;
+				$config['overwrite'] = false;
+				// $config['file_name'] = $fileName;
+				//Libreria para permitir el upload
+				$this->load->library('upload', $config);
+				$this->upload->initialize($config);
+				if (! $this->upload->do_upload("file")) {
+					$status = 'error';
+		            $msg = $this->upload->display_errors('', '');
+				}else{
+					$data = $this->upload->data();
+					//Guardar la referencia al archivo en la BD
+					$fileName = $data['file_name'];
+					$ruta = $data['full_path'];
+					$this->modelMultimedia->addMultimedia($zona, $panel, $idioma, $codImagen, $fileName, $ruta);
 	                $status = "success";
-	                $msg = "File successfully uploaded";
-	            }
-	            else
-	            {
-	                unlink($data['full_path']);
-	                $status = "error";
-	                $msg = "Something went wrong when saving the file, please try again.";
-	            }
-	        }
-	        @unlink($_FILES[$fileName]);
-	    // }
-	    echo json_encode(array('status' => $status, 'msg' => $msg));
+	                $msg = $codImagen;
+				}
+			}else{
+				$status = 'error';
+	        	$msg = 'No se puede registrar el archivo en el sistema';
+			}
+		}else{
+			$status = 'error';
+	        $msg = 'No se puede guardar el archivo seleccionado';
+		}
+		echo json_encode(array('status' => $status, 'msg' => $msg));
 	}
+
+	public function setVisibility(){
+		$zona=trim($this->input->post("zona"));
+		$panel=trim($this->input->post("panel"));
+		$idioma=trim($this->input->post("idioma"));
+		$MULid=trim($this->input->post("MULid"));
+		$necesidad=trim($this->input->post("necesidad"));
+		$rpta=$this->modelMultimedia->setVisibility($zona, $panel, $idioma, $MULid, $necesidad);
+		echo '';
+	}
+
+	public function getPanelByLanguage(){
+		$zona=trim($this->input->post("zona"));
+		$panel=trim($this->input->post("panel"));
+		$idioma=trim($this->input->post("idioma"));
+		$rpta=$this->modelPanelDesc->getPanelDesc($zona, $panel, $idioma);
+		echo json_encode($rpta);
+	}
+
+	public function getMultimediaByLanguage(){
+		$zona=trim($this->input->post("zona"));
+		$panel=trim($this->input->post("panel"));
+		$idioma=trim($this->input->post("idioma"));
+		$rpta=$this->modelMultimedia->getMultimedia($zona, $panel, $idioma);
+		echo json_encode($rpta);
+	}
+
 
 
 

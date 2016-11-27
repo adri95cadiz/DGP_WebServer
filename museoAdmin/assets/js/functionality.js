@@ -2,10 +2,15 @@ var base_url;
 var msjeAlerta;
 
 //Función para inhabilitar el botón atrás. 
-function nobackbutton(base_url){ 
+function nobackbutton(ruta){ 
+  base_url=ruta;
   window.location.hash="no-back-button";
   window.location.hash="Again-No-back-button" //chrome
   window.onhashchange=function(){window.location.hash="no-back-button";}
+  var registroDetallePanelFound = window.location.pathname.search('registroDetallePanel');
+  if(registroDetallePanelFound>=0){
+    seleccionarIdioma(base_url);
+  }
   // if(window.history == base_url+"index.php/admin/tipoDispositivo"){
   //   window.location.href=base_url+'index.php/admin';
   // }
@@ -170,7 +175,7 @@ function verificarPaginas(base_url){
         type: 'POST',
         data: 'ZONid='+ZONid,
         success:function(respuesta){
-          $('#PANid').val(respuesta);
+          $('#PANidForm').val(respuesta);
           alertify.success('Nuevo panel registrado');
           document.forms['frmRegistroPanel'].submit();
         },error: function(respuesta){
@@ -184,29 +189,64 @@ function verificarPaginas(base_url){
     base_url=ruta;
     var idioma = $('#cboIdioma option:selected').html();
     var LANid = $('#cboIdioma').val();
-    $('#idiomaSeleccionadoTittle').text(idioma);
-    // getPanelByLanguage(LANid);
+    if (LANid!='undefined') {
+      $('#idiomaSeleccionadoTittle').text(idioma);
+      getPanelByLanguage(LANid);
+      getMultimediaByLanguage(LANid);
+    }
   }
 
-  function getPanelByLanguage(LANid){
-    var zone = $('#txtZONid').val();
+  function getPanelByLanguage(idioma){
+    var zona = $('#txtZONid').val();
     var panel = $('#txtPANid').val();
     $.ajax({
         url: base_url+'index.php/admin/getPanelByLanguage',
         type: 'POST',
-        data: 'LANid='+LANid+'&zone='+zone+'&panel='+panel,
+        data: 'idioma='+idioma+'&zona='+zona+'&panel='+panel,
         dataType: 'json',
         success:function(respuesta){
           // alertify.success('Datos actualizados satisfactoriamente');
           // location.reload();
           $.each(respuesta, function(key){
-              titulo = respuesta[key].titulo;
-              subtitulo = respuesta[key].subtitulo;
-              descripcion = respuesta[key].descripcion;
+              flag = respuesta[key].PANid;
+              if(flag!='0'){
+                titulo = respuesta[key].PDEtitle;
+                subtitulo = respuesta[key].PDEsubTitle;
+                descripcion = respuesta[key].PDEcontent;
+                $('#txtTitulo').val(titulo);
+                $('#txtSubtitulo').val(subtitulo);
+                $('#txtDescripcion').val(descripcion);
+              }
           });
-          $('#txtTitulo').val(titulo);
-          $('#txtSubtitulo').val(subtitulo);
-          $('#txtDescripcion').val(descripcion);
+        },error: function(respuesta){
+          alertify.error('Lo sentimos, los datos no pueden ser actualizados.');
+        }
+    });
+  }
+
+  function getMultimediaByLanguage(idioma){
+    var zona = $('#txtZONid').val();
+    var panel = $('#txtPANid').val();
+    $.ajax({
+        url: base_url+'index.php/admin/getMultimediaByLanguage',
+        type: 'POST',
+        data: 'idioma='+idioma+'&zona='+zona+'&panel='+panel,
+        dataType: 'json',
+        success:function(respuesta){
+          // alertify.success('Datos actualizados satisfactoriamente');
+          // location.reload();
+          var respuesta;
+          $.each(respuesta, function(key){
+              zona = respuesta[key].ZONid;
+              panel = respuesta[key].PANid;
+              idioma = respuesta[key].LANid;
+              id = respuesta[key].MULid;
+              descripcion = respuesta[key].MULdescription;
+              order = respuesta[key].MULorder;
+              ruta = respuesta[key].MULrute;
+              state = respuesta[key].MULstate;
+              
+          });
         },error: function(respuesta){
           alertify.error('Lo sentimos, los datos no pueden ser actualizados.');
         }
@@ -231,7 +271,85 @@ function verificarPaginas(base_url){
     });
   }
 
-  
+  function guardarArchivo(ruta){
+    base_url=ruta;
+    var zona = $('#txtZONid').val();
+    var panel = $('#txtPANid').val();
+    var idioma = $('#cboIdioma').val();
+    var necesidades = getNecesidadesSeleccionadas();
+    if(necesidades.length>0){
+      ajaxSaveFile(zona, panel, idioma, necesidades);
+    }else{
+      alertify.error('Debe indicar para que tipo de necesidades especiales estará disponible el archivo multimedia');
+    }
+  }
+
+  function getNecesidadesSeleccionadas(){
+    var necesidadesChecked = new Array();
+    $("input:checkbox:checked").each(function(){
+        necesidadesChecked.push($(this).val());
+    });
+    return necesidadesChecked;
+  }
+
+  function ajaxSaveFile(zona, panel, idioma, necesidades){
+    var inputFile = $('input[name=fileMultimedia]');
+    var uploadURI = base_url+'index.php/admin/uploadMultimedia';
+
+    var fileToUpload = inputFile[0].files[0];
+    // make sure there is file to upload
+    if (fileToUpload != 'undefined') {
+      // provide the form data
+      // that would be sent to sever through ajax
+      var formData = new FormData();
+      formData.append("file", fileToUpload);
+      formData.append("zona", zona);
+      formData.append("panel", panel);
+      formData.append("idioma", idioma);
+      // now upload the file using $.ajax
+      $.ajax({
+        url: uploadURI,
+        type: 'post',
+        data: formData,
+        processData: false,
+        dataType    : 'json',
+        contentType: false,
+        success: function(data,status) {
+          if(status != 'error'){
+            alertify.success('Archivo guardado satisfactoriamente');
+            var id=data['msg'];
+            asignarNecEspeciales(id, necesidades);
+          }else{
+            alertify.error(data['msg']);
+          }
+        },error: function(data,status){
+          alertify.error(data['msg']);
+        }
+      });
+    }
+  }
+
+  function asignarNecEspeciales(id, necesidades){
+    for(i=0; i<necesidades.length; i++){
+      setVisibility(id, necesidades[i]);
+    }
+  }
+
+  function setVisibility(id, necesidad){
+    var zona = $('#txtZONid').val();
+    var panel = $('#txtPANid').val();
+    var idioma = $('#cboIdioma').val();
+    $.ajax({
+        url: base_url+'index.php/admin/setVisibility',
+        type: 'POST',
+        data: 'zona='+zona+'&panel='+panel+'&idioma='+idioma+'&MULid='+id+'&necesidad='+necesidad,
+        success:function(respuesta){
+          alertify.success('Información de panel registrada satisfactoriamente');
+        },error: function(respuesta){
+          alertify.error('Hubo un error al grabar los datos');
+        }
+    });
+  }
 
 
 
