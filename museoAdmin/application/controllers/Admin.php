@@ -215,7 +215,8 @@ class Admin extends CI_Controller {
 					$data = $this->upload->data();
 					//Guardar la referencia al archivo en la BD
 					$fileName = $data['file_name'];
-					$ruta = $data['full_path'];
+					// $ruta = $data['full_path'];
+					$ruta = $config['upload_path'];
 					$this->modelMultimedia->addMultimedia($zona, $panel, $idioma, $codImagen, $fileName, $ruta);
 	                $status = "success";
 	                $msg = $codImagen;
@@ -259,8 +260,8 @@ class Admin extends CI_Controller {
 
 	public function downloadFile(){
 		$this->load->helper('download');
-		$name=trim($this->input->post("fileName"));
-		// $filePath=file_get_contents(trim($this->input->post("filePath")));
+		$name=trim($this->input->post("txtDescripcionFile"));
+		// $filePath=file_get_contents(trim($this->input->post("txtRutaFile")));
 		$data=file_get_contents('./assets/files/'.$name);
 		force_download($name, $data);
 	}

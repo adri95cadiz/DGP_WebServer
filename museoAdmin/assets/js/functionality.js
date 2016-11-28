@@ -247,7 +247,12 @@ function verificarPaginas(base_url){
               var trs=$("#"+tabla+" tr").length;
               var nuevaFila='<tr>';
               nuevaFila=nuevaFila+'<td>'+order+'</td> <td>'+descripcion+'</td><td>'+features+'</td>';
-              nuevaFila=nuevaFila+'<td> <button type="button" class="btn btn-primary btn-circle" onClick="downloadFile(\'<?php echo base_url(); ?>\', \''+descripcion+'\', \''+ruta+'\')"><i class="fa fa-download"></i></button> </td>';
+              // nuevaFila=nuevaFila+'<td> <button type="button" class="btn btn-primary btn-circle" onClick="downloadFile(\'<?php echo base_url(); ?>\', \''+descripcion+'\', \''+ruta+'\')"><i class="fa fa-download"></i></button> </td>';
+              nuevaFila=nuevaFila+'<td><form action="'+base_url+'index.php/admin/downloadFile" target="_blank" method="POST" role="form">';
+              nuevaFila=nuevaFila+'<input type="text" name="txtDescripcionFile" value="'+descripcion+'" hidden>';
+              nuevaFila=nuevaFila+'<input type="text" name="txtRutaFile" value="'+ruta+'" hidden>';
+              nuevaFila=nuevaFila+'<button type="submit" class="btn btn-primary btn-circle"><i class="fa fa-download"></i></button>';
+              nuevaFila=nuevaFila+'</form></td>';
               nuevaFila=nuevaFila+'<td> <button type="button" class="btn btn-danger btn-circle" onClick="confEliminarFile(\'<?php echo base_url(); ?>\', \''+zona+'\', \''+panel+'\', \''+idioma+'\', \''+id+'\')"><i class="fa fa-times"></i></button> </td>';
               nuevaFila=nuevaFila+'</tr>';
               addRow(tabla, nuevaFila);
@@ -259,6 +264,7 @@ function verificarPaginas(base_url){
   }
 
   function downloadFile(ruta, fileName, filePath){
+    window.open('http://ejemplo.com/archivo.pdf', '_blank');
     $.ajax({
         url: base_url+'index.php/admin/downloadFile',
         type: 'POST',
