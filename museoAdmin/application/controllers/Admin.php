@@ -147,16 +147,6 @@ class Admin extends CI_Controller {
 	}
         
     
-//CONTROLES DE PLANTILLA
-
-<<<<<<< HEAD
-	public function forms()
-	{
-		$data['elements']=$this->modelElements->getElements();
-		$this->load->view('header', $data);
-		$this->load->view('templateViews/forms');
-		$this->load->view('footer');
-=======
 	public function uploadMultimedia(){
 		$status = "";
 	    $msg = "";
@@ -201,56 +191,14 @@ class Admin extends CI_Controller {
 	        $msg = 'No se puede guardar el archivo seleccionado';
 		}
 		echo json_encode(array('status' => $status, 'msg' => $msg));
->>>>>>> 4903d91859b5f465b453f97fa2c6f21b30fef45e
 	}
 
-	public function blank()
-	{
-		$data['elements']=$this->modelElements->getElements();
-		$this->load->view('header', $data);
-		$this->load->view('templateViews/blank');
-		$this->load->view('footer');
-	}
-
-	public function buttons()
-	{
-		$data['elements']=$this->modelElements->getElements();
-		$this->load->view('header', $data);
-		$this->load->view('templateViews/buttons');
-		$this->load->view('footer');
-	}
-
-	public function flot()
-	{
-		$data['elements']=$this->modelElements->getElements();
-		$this->load->view('header', $data);
-		$this->load->view('templateViews/flot');
-		$this->load->view('footer');
-	}
-
-<<<<<<< HEAD
-	public function grid()
-	{
-		$data['elements']=$this->modelElements->getElements();
-		$this->load->view('header', $data);
-		$this->load->view('templateViews/grid');
-		$this->load->view('footer');
-=======
 	public function downloadFile(){
 		$this->load->helper('download');
 		$name=trim($this->input->post("txtDescripcionFile"));
 		// $filePath=file_get_contents(trim($this->input->post("txtRutaFile")));
 		$data=file_get_contents('./assets/files/'.$name);
 		force_download($name, $data);
->>>>>>> 4903d91859b5f465b453f97fa2c6f21b30fef45e
-	}
-
-	public function icons()
-	{
-		$data['elements']=$this->modelElements->getElements();
-		$this->load->view('header', $data);
-		$this->load->view('templateViews/icons');
-		$this->load->view('footer');
 	}
 
 	public function login()
@@ -266,36 +214,4 @@ class Admin extends CI_Controller {
 		$this->load->view('footer');
 	}
 
-	public function notifications()
-	{
-		$data['elements']=$this->modelElements->getElements();
-		$this->load->view('header', $data);
-		$this->load->view('templateViews/notifications');
-		$this->load->view('footer');
-	}
-
-	public function panels()
-	{
-		$data['elements']=$this->modelElements->getElements();
-		$this->load->view('header', $data);
-		$this->load->view('templateViews/panels-wells');
-		$this->load->view('footer');
-	}
-
-	public function tables()
-	{
-		// $data['idiomas']=$this->mariaDBprueba->getData();
-		$data['elements']=$this->modelElements->getElements();
-		$this->load->view('header', $data);
-		$this->load->view('templateViews/tables');
-		$this->load->view('footer');
-	}
-
-	public function typography()
-	{
-		$data['elements']=$this->modelElements->getElements();
-		$this->load->view('header', $data);
-		$this->load->view('templateViews/typography');
-		$this->load->view('footer');
-	}
 }
