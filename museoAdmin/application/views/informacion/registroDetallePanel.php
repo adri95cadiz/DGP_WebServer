@@ -119,34 +119,11 @@
                                                         <th>Posición</th>
                                                         <th>Nombre archivo</th>
                                                         <th>Discapacidades</th>
+                                                        <th>Descargar</th>
                                                         <th>Borrar</th>
                                                       </tr>
                                                     </thead>
                                                     <tbody>
-                                                      <tr>
-                                                        <td>1</td>
-                                                        <td>Videogestual.mp4</td>
-                                                        <td>sordo,sin dicapacidad</td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-danger btn-circle" onClick="confirmacionEliminar('<?php echo base_url(); ?>')"><i class="fa fa-times"></i></button>
-                                                        </td>
-                                                      </tr>
-                                                      <tr>
-                                                        <td>2</td>
-                                                        <td>Videoexplicativo.mp4</td>
-                                                        <td>sin discapacidad</td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-danger btn-circle" onClick="confirmacionEliminar('<?php echo base_url(); ?>')"><i class="fa fa-times"></i></button>
-                                                        </td>
-                                                      </tr>
-                                                      <tr>
-                                                        <td>3</td>
-                                                        <td>audio.mp3</td>
-                                                        <td>ciego</td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-danger btn-circle" onClick="confirmacionEliminar('<?php echo base_url(); ?>')"><i class="fa fa-times"></i></button>
-                                                        </td>
-                                                      </tr>
                                                     </tbody>
                                                 </table>
                                             </div>

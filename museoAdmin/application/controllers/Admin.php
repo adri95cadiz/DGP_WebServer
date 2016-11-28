@@ -149,12 +149,59 @@ class Admin extends CI_Controller {
     
 //CONTROLES DE PLANTILLA
 
+<<<<<<< HEAD
 	public function forms()
 	{
 		$data['elements']=$this->modelElements->getElements();
 		$this->load->view('header', $data);
 		$this->load->view('templateViews/forms');
 		$this->load->view('footer');
+=======
+	public function uploadMultimedia(){
+		$status = "";
+	    $msg = "";
+		$ruta="./assets/files";
+		if ( ! empty($_FILES))
+		{
+			$zona=trim($this->input->post("zona"));
+			$panel=trim($this->input->post("panel"));
+			$idioma=trim($this->input->post("idioma"));
+			$codImagen=$this->modelMultimedia->getNextCod($zona, $panel, $idioma);
+			if($codImagen!='0'){
+				// $fileName=$zona.'_'.$panel.'_'.$idioma.'_'.$codImagen;		//Solo en el 
+				//Parámetros para registrar el archivo
+				$config['upload_path'] = $ruta;
+				$config['allowed_types'] = 'gif|jpg|png|mp4|ogv';
+				$config['max_size'] = 1024 * 10;
+				$config['remove_spaces'] = true;
+				$config['overwrite'] = false;
+				// $config['file_name'] = $fileName;
+				//Libreria para permitir el upload
+				$this->load->library('upload', $config);
+				$this->upload->initialize($config);
+				if (! $this->upload->do_upload("file")) {
+					$status = 'error';
+		            $msg = $this->upload->display_errors('', '');
+				}else{
+					$data = $this->upload->data();
+					//Guardar la referencia al archivo en la BD
+					$fileName = $data['file_name'];
+					// $ruta = $data['full_path'];
+					$ruta = $config['upload_path'];
+					$this->modelMultimedia->addMultimedia($zona, $panel, $idioma, $codImagen, $fileName, $ruta);
+	                $status = "success";
+	                $msg = $codImagen;
+				}
+			}else{
+				$status = 'error';
+	        	$msg = 'No se puede registrar el archivo en el sistema';
+			}
+		}else{
+			$status = 'error';
+	        $msg = 'No se puede guardar el archivo seleccionado';
+		}
+		echo json_encode(array('status' => $status, 'msg' => $msg));
+>>>>>>> 4903d91859b5f465b453f97fa2c6f21b30fef45e
 	}
 
 	public function blank()
@@ -181,12 +228,21 @@ class Admin extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+<<<<<<< HEAD
 	public function grid()
 	{
 		$data['elements']=$this->modelElements->getElements();
 		$this->load->view('header', $data);
 		$this->load->view('templateViews/grid');
 		$this->load->view('footer');
+=======
+	public function downloadFile(){
+		$this->load->helper('download');
+		$name=trim($this->input->post("txtDescripcionFile"));
+		// $filePath=file_get_contents(trim($this->input->post("txtRutaFile")));
+		$data=file_get_contents('./assets/files/'.$name);
+		force_download($name, $data);
+>>>>>>> 4903d91859b5f465b453f97fa2c6f21b30fef45e
 	}
 
 	public function icons()
