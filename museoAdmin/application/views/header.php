@@ -45,6 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- JS PROPIOS-->
         <script src="<?php echo base_url(); ?>assets/js/functionality.js"></script>
 
+
     <!-- /OPCIONALES -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -57,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 
 
-<body onload="nobackbutton('<?php echo base_url(); ?>')" onUnLoad="verificarPaginas('<?php echo base_url(); ?>')">
+<body>
 
     <div id="wrapper">
 

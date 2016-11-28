@@ -51,7 +51,7 @@
                                                 echo '<td width="20%">'.$row['ELEdescription'].'</td>';
                                                 echo '<td>'.$row['ELEstate'].'</td>';
                                                 echo '<td class="center text-center" width="10%">'?>
-                                                    <button type="submit" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-pencil"></i> </button>
+                                                    <button type="submit" class="btn btn-warning btn-circle btn-sm" onClick="editarZona('<?php echo base_url(); ?>')"><i class="fa fa-pencil" ></i> </button>
                                                 <?php 
                                                 echo '</td>';
                                                 echo '<td class="center text-center" width="10%">

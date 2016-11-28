@@ -2,7 +2,7 @@
 	if( !defined('BASEPATH')) 
 		exit('No se permite acceso al script');
 
-class ModelFeatures extends CI_Model {
+class modelFeatures extends CI_Model {
 
     //CONSTRUCTOR DE LA CLASE
     function __construct() {
@@ -11,7 +11,7 @@ class ModelFeatures extends CI_Model {
 
     public function getFeatures(){
         $sql= "call SP_features(1, '', '', '');";
-        $query = $this->modelZone->async_query($sql);
+        $query = $this->db->query($sql);
         return $query;
     }
 

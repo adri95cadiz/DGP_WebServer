@@ -51,17 +51,17 @@
                             <?php 
                                 if(isset($necesidades)){
                                     if($necesidades){
-                                        foreach ($necesidades as $row) { 
+                                        foreach ($necesidades->result() as $dnecesidades) { 
                                             echo '<tr>';
-                                                echo '<td>'.$row['FEAid'].'</td>';
-                                                echo '<td width="20%">'.$row['FEAdescription'].'</td>';
-                                                echo '<td>'.$row['FEAstate'].'</td>';
+                                                echo '<td>'.$dnecesidades->FEAid.'</td>';
+                                                echo '<td width="20%">'.$dnecesidades->FEAdescription.'</td>';
+                                                echo '<td>'.$dnecesidades->FEAstate.'</td>';
                                                 echo '<td class="center text-center" width="10%">'?>
                                                     <button type="submit" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-pencil"></i> </button>
                                                 <?php 
                                                 echo '</td>';
                                                 echo '<td class="center text-center" width="10%">
-                                                    <button type="button" class="btn btn-danger btn-circle btn-sm" onclick="return confEliminarNecesidad(\''.base_url().'\', \''.$row['FEAid'].'\');"><i class="fa fa-times"></i>
+                                                    <button type="button" class="btn btn-danger btn-circle btn-sm" onclick="return confEliminarNecesidad(\''.base_url().'\', \''.$dnecesidades->FEAid.'\');"><i class="fa fa-times"></i>
                                                         </button>
                                                 </td>';
                                             echo '</tr>';

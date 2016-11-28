@@ -2,7 +2,7 @@
 	if( !defined('BASEPATH')) 
 		exit('No se permite acceso al script');
 
-class ModelRooms extends CI_Model {
+class modelRooms extends CI_Model {
 
     //CONSTRUCTOR DE LA CLASE
     function __construct() {

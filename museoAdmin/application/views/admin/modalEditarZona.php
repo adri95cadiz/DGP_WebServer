@@ -1,14 +1,12 @@
-            
-
-            <!--START OF MODAL-->
-            <div class="modal fade" id="modalEditarDispositivo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!--START OF MODAL-->
+            <div class="modal fade" id="modalEditarZona" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                     
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
                           <!-- TITULO -->
-                          <h3 id="cabeceraModalSubProcesos"type="hidden" class="modal-title subfuente text-center">Configuración de Dispositivo</h3>
+                          <h3 id="cabeceraModalSubProcesos"type="hidden" class="modal-title subfuente text-center">Configuración de Zona</h3>
                         </div>
 
                         <div class="modal-body">
@@ -16,35 +14,16 @@
                             <div class="row">
                                 <form role="form" class="form-horizontal">                                    
                                     <div class="form-group ">
-                                        <label for="txtNFCmodal" class="col-lg-3 col-md-3 control-label">Código Dispositivo:</label>
-                                        <div class="col-lg-8 col-md-8">
-                                            <input type="text" class="form-control hidden" id="txtNFCmodal" value="" disabled hidden>
-                                            <p class="form-control-static mb-0">0004</p>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
                                         <label for="txtDescripcionModal" class="col-lg-3 col-md-3 control-label">Descripción:</label>
                                         <div class="col-lg-8 col-md-8">
                                           <input type="text" class="form-control" id="txtDescripcionModal">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="cboTipoIdentificadorModal" class="col-lg-3 col-md-3 control-label">Tipo Identificador:</label>
+                                        <label for="cboTipoIdentificadorModal" class="col-lg-3 col-md-3 control-label">Id:</label>
                                         <div class="col-lg-8 col-md-8">
-                                            <select class="form-control" id="cboTipoIdentificadorModal">
-                                                <option>Vitrina</option>
-                                                <option>Linea de tiempo</option>
-                                            </select>
-                                        </div>                        
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="cboSalaModal" class="col-lg-3 col-md-3 control-label" >Sala:</label>
-                                        <div class="col-lg-8 col-md-8">
-                                            <select class="form-control" id="cboSalaModal">
-                                                <option>Sala 1</option>
-                                                <option>Sala 2</option>
-                                            </select>
-                                        </div>                        
+                                          <input type="text" class="form-control" id="txtDescripcionModal">
+                                        </div>                      
                                     </div>
                                     <div class="form-group">
                                         <label class="col-lg-3 col-md-3 control-label">Estado:</label>
