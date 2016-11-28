@@ -257,6 +257,13 @@ class Admin extends CI_Controller {
 		echo json_encode($rpta);
 	}
 
+	public function downloadFile(){
+		$this->load->helper('download');
+		$name=trim($this->input->post("fileName"));
+		// $filePath=file_get_contents(trim($this->input->post("filePath")));
+		$data=file_get_contents('./assets/files/'.$name);
+		force_download($name, $data);
+	}
 
 
 

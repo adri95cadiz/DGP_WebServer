@@ -39,7 +39,7 @@ class ModelMultimedia extends CI_Model {
     public function getMultimedia($zona, $panel, $idioma){
         $sql= "call SP_multimedia(1, '".$panel."', '".$zona."', '".$idioma."', '', '', '', '', '', '');";
         $query = $this->db->query($sql);
-        return $query;
+        return $query->result();
     }
 
 

@@ -219,7 +219,7 @@ function verificarPaginas(base_url){
               }
           });
         },error: function(respuesta){
-          alertify.error('Lo sentimos, los datos no pueden ser actualizados.');
+          // alertify.error('Lo sentimos, los datos no pueden ser actualizados.');
         }
     });
   }
@@ -233,9 +233,6 @@ function verificarPaginas(base_url){
         data: 'idioma='+idioma+'&zona='+zona+'&panel='+panel,
         dataType: 'json',
         success:function(respuesta){
-          // alertify.success('Datos actualizados satisfactoriamente');
-          // location.reload();
-          var respuesta;
           $.each(respuesta, function(key){
               zona = respuesta[key].ZONid;
               panel = respuesta[key].PANid;
@@ -245,10 +242,53 @@ function verificarPaginas(base_url){
               order = respuesta[key].MULorder;
               ruta = respuesta[key].MULrute;
               state = respuesta[key].MULstate;
-              
+              features = respuesta[key].features;
+              var tabla='tblMultimediaFiles';
+              var trs=$("#"+tabla+" tr").length;
+              var nuevaFila='<tr>';
+              nuevaFila=nuevaFila+'<td>'+order+'</td> <td>'+descripcion+'</td><td>'+features+'</td>';
+              nuevaFila=nuevaFila+'<td> <button type="button" class="btn btn-primary btn-circle" onClick="downloadFile(\'<?php echo base_url(); ?>\', \''+descripcion+'\', \''+ruta+'\')"><i class="fa fa-download"></i></button> </td>';
+              nuevaFila=nuevaFila+'<td> <button type="button" class="btn btn-danger btn-circle" onClick="confEliminarFile(\'<?php echo base_url(); ?>\', \''+zona+'\', \''+panel+'\', \''+idioma+'\', \''+id+'\')"><i class="fa fa-times"></i></button> </td>';
+              nuevaFila=nuevaFila+'</tr>';
+              addRow(tabla, nuevaFila);
           });
         },error: function(respuesta){
           alertify.error('Lo sentimos, los datos no pueden ser actualizados.');
+        }
+    });
+  }
+
+  function downloadFile(ruta, fileName, filePath){
+    $.ajax({
+        url: base_url+'index.php/admin/downloadFile',
+        type: 'POST',
+        data: 'fileName='+fileName+'&filePath='+filePath,
+        success:function(respuesta){
+          alertify.success('Archivo descargado satisfactoriamente.');
+        },error: function(respuesta){
+          alertify.error('Archivo no disponible para su descarga.');
+        }
+    });
+  }
+
+  function confEliminarFile(ruta, zona, panel, idioma, id){
+    base_url=ruta;
+    msjeAlerta='Si elimina este archivo no podrá recuperarlo <br> ¿Está seguro que desea eliminar el archivo seleccionado?';
+    funcion="eliminarFile('"+zona+"', '"+panel+"', '"+idioma+"', '"+id+"')";
+    // La función modalAlerta ejecuta un cuadro de alerta para confirmar antes de hacer algo. 
+    // Se le pasa el mensaje que mostrará y la función que ejecutará al confirmar el modal.
+    modalAlerta(msjeAlerta, funcion);
+  }
+
+  function eliminarFile(zona, panel, idioma, id){
+    $.ajax({
+        url: base_url+'index.php/admin/eliminarFile',
+        type: 'POST',
+        data: 'zona='+zona+'&panel='+panel+'&idioma='+idioma+'&id='+id,
+        success:function(respuesta){
+          alertify.success('Archivo eliminado satisfactoriamente.');
+        },error: function(respuesta){
+          alertify.error('Este archivo no puede ser eliminado.');
         }
     });
   }
@@ -355,8 +395,9 @@ function verificarPaginas(base_url){
 
 
 
-
-
+  function addRow(tabla, fila){
+    $("#"+tabla).append(fila);
+  }
 
 
 // MODALES
