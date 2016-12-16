@@ -1,8 +1,8 @@
 <?php 
-	if( !defined('BASEPATH')) 
-		exit('No se permite acceso al script');
+    if( !defined('BASEPATH')) 
+        exit('No se permite acceso al script');
 
-class modelZone extends CI_Model {
+class ModelZone extends CI_Model {
 
     //CONSTRUCTOR DE LA CLASE
     function __construct() {
@@ -39,7 +39,7 @@ class modelZone extends CI_Model {
     public function getDispositivo($ZONid)
     {
         $sql= "call SP_zones(5, '".$ZONid."', '', '', '', '');";
-        $query = $this->query($sql);
+        $query = $this->async_query($sql);
         return $query;
     }
 
@@ -67,6 +67,17 @@ class modelZone extends CI_Model {
         return $query;
     }
 
+    public function verificarMultimedia($id){
+        $sql= "call SP_zones(8, '".$id."', '', '', '', '');";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+    public function editarZone($id, $descripcion, $tipoZona, $sala, $estado){
+        $sql= "call SP_zones(3, '".$id."', '".$descripcion."', '".$sala."', '".$tipoZona."', '".$estado."');";
+        $query = $this->db->query($sql);
+        return $query;
+    }
 
 }
 ?>

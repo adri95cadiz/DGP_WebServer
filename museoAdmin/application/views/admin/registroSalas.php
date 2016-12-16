@@ -13,19 +13,21 @@
                 <br>
                 <div class="row">
                     <div class="col-lg-10 col-lg-offset-1">
-                        <div class="form-group">
-                            <div class="control-label col-lg-2 col-md-3">
-                                <label>Nombre de sala:</label>
+                        <form class="form-horizontal" method="POST" role="form" action="<?php echo base_url(); ?>index.php/admin/registrarSala">
+                            <div class="form-group">
+                                <div class="control-label col-lg-2 col-md-3">
+                                    <label for="txtSala">Nombre de sala:</label>
+                                </div>
+                                <div class="col-lg-8 col-md-6">
+                                    <input type="text" class="form-control" name="txtSala" id="txtSala">
+                                </div>
+                                <div class="col-lg-2 col-md-3" style="padding-top: -5px; ">
+                                    <button type="submit" class="btn btn-success btn-lg" style="padding-top: -5px; margin-top: -5px;">
+                                        <i class="fa fa-plus"></i> &nbsp Agregar
+                                    </button>
+                                </div>
                             </div>
-                            <div class="col-lg-8 col-md-6">
-                                <input type="text" class="form-control" name="txtSala" >
-                            </div>
-                            <div class="col-lg-2 col-md-3" style="padding-top: -5px; ">
-                                <button class="btn btn-success btn-lg" style="padding-top: -5px; margin-top: -5px;">
-                                    <i class="fa fa-plus"></i> &nbsp Agregar
-                                </button>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 <br>
@@ -51,11 +53,11 @@
                                                 echo '<td width="20%">'.$row['ROOdescription'].'</td>';
                                                 echo '<td>'.$row['ROOstate'].'</td>';
                                                 echo '<td class="center text-center" width="10%">'?>
-                                                    <button type="submit" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-pencil"></i> </button>
+                                                    <button type="submit" class="btn btn-warning btn-circle btn-sm" onClick="editarSala('<?php echo $row['ROOid']; ?>', '<?php echo $row['ROOdescription']; ?>', '<?php echo $row['ROOstate']; ?>')"><i class="fa fa-pencil" ></i> </button>
                                                 <?php 
                                                 echo '</td>';
                                                 echo '<td class="center text-center" width="10%">
-                                                    <button type="button" class="btn btn-danger btn-circle btn-sm" onclick="return confirmacionEliminarSala(\''.base_url().'\');"><i class="fa fa-times"></i>
+                                                    <button type="button" class="btn btn-danger btn-circle btn-sm" onclick="return confEliminarSala(\''.base_url().'\', \''.$row['ROOid'].'\');"><i class="fa fa-times"></i>
                                                         </button>
                                                 </td>';
                                             echo '</tr>';

@@ -23,6 +23,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Custom Fonts -->
     <link href="<?php echo base_url(); ?>assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <!-- Custom flags -->
+    <link href="<?php echo base_url(); ?>assets/dist/css/flags.css" rel="stylesheet" type="text/css">
+
     <!-- OPCIONALES -->
 
 	    <!-- Morris Charts CSS -->
@@ -44,7 +47,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <!-- JS PROPIOS-->
         <script src="<?php echo base_url(); ?>assets/js/functionality.js"></script>
-
+    
+        <!-- SELECT 2 -->
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/select2.css" />
+        
 
     <!-- /OPCIONALES -->
 
@@ -58,7 +64,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 
 
-<body>
+<body onload="nobackbutton('<?php echo base_url(); ?>')" onUnLoad="verificarPaginas('<?php echo base_url(); ?>')">
 
     <div id="wrapper">
 
@@ -79,7 +85,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <!-- /.navbar-header -->
 
                 <ul class="nav navbar-top-links navbar-right">
-                    <li class="dropdown">
+                    <!-- <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
                         </a>
@@ -126,11 +132,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <i class="fa fa-angle-right"></i>
                                 </a>
                             </li>
-                        </ul>
+                        </ul> -->
                         <!-- /.dropdown-messages -->
-                    </li>
+                    <!-- </li> -->
                     <!-- /.dropdown -->
-                    <li class="dropdown">
+                    <!-- <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
                         </a>
@@ -205,11 +211,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <i class="fa fa-angle-right"></i>
                                 </a>
                             </li>
-                        </ul>
+                        </ul>    -->
                         <!-- /.dropdown-tasks -->
-                    </li>
+                    <!-- </li> -->
                     <!-- /.dropdown -->
-                    <li class="dropdown">
+                    <!-- <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
                         </a>
@@ -265,9 +271,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <i class="fa fa-angle-right"></i>
                                 </a>
                             </li>
-                        </ul>
+                        </ul>   -->
                         <!-- /.dropdown-alerts -->
-                    </li>
+                    <!-- </li>  -->
                     <!-- /.dropdown -->
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">

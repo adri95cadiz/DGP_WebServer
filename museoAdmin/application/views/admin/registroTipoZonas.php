@@ -13,19 +13,21 @@
                 <br>
                 <div class="row">
                     <div class="col-lg-10 col-lg-offset-1">
-                        <div class="form-group">
-                            <div class="control-label col-lg-2 col-md-3">
-                                <label>Nombre de la zona:</label>
+                        <form class="form-horizontal" method="POST" role="form" action="<?php echo base_url(); ?>index.php/admin/registrarTipoZona" >
+                            <div class="form-group">
+                                <div class="control-label col-lg-2 col-md-3">
+                                    <label for="txtTipoZona">Nombre de la zona:</label>
+                                </div>
+                                <div class="col-lg-8 col-md-6">
+                                    <input type="text" class="form-control" name="txtTipoZona" id="txtTipoZona">
+                                </div>
+                                <div class="col-lg-2 col-md-3" style="padding-top: -5px; ">
+                                    <button class="btn btn-success btn-md" style="padding-top: -5px; margin-top: -5px;">
+                                        <i class="fa fa-plus"></i> &nbsp Agregar
+                                    </button>
+                                </div>
                             </div>
-                            <div class="col-lg-8 col-md-6">
-                                <input type="text" class="form-control" name="txtSala" >
-                            </div>
-                            <div class="col-lg-2 col-md-3" style="padding-top: -5px; ">
-                                <button class="btn btn-success btn-lg" style="padding-top: -5px; margin-top: -5px;">
-                                    <i class="fa fa-plus"></i> &nbsp Agregar
-                                </button>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 <br>
@@ -43,19 +45,19 @@
                             </thead>
                             <tbody>
                             <?php 
-                                if(isset($elements)){
-                                    if($elements){
-                                        foreach ($elements as $row) { 
+                                if(isset($tiposZonas)){
+                                    if($tiposZonas){
+                                        foreach ($tiposZonas as $row) { 
                                             echo '<tr>';
                                                 echo '<td>'.$row['ELEid'].'</td>';
                                                 echo '<td width="20%">'.$row['ELEdescription'].'</td>';
                                                 echo '<td>'.$row['ELEstate'].'</td>';
                                                 echo '<td class="center text-center" width="10%">'?>
-                                                    <button type="submit" class="btn btn-warning btn-circle btn-sm" onClick="editarZona('<?php echo base_url(); ?>')"><i class="fa fa-pencil" ></i> </button>
+                                                    <button type="submit" class="btn btn-warning btn-circle btn-sm" onClick="editarTipoZona('<?php echo $row['ELEid']; ?>', '<?php echo $row['ELEdescription']; ?>', '<?php echo $row['ELEstate']; ?>')"><i class="fa fa-pencil" ></i> </button>
                                                 <?php 
                                                 echo '</td>';
                                                 echo '<td class="center text-center" width="10%">
-                                                    <button type="button" class="btn btn-danger btn-circle btn-sm" onclick="return confirmacionEliminarSala(\''.base_url().'\');"><i class="fa fa-times"></i>
+                                                    <button type="button" class="btn btn-danger btn-circle btn-sm" onclick="return confEliminarTipoZona(\''.base_url().'\', \''.$row['ELEid'].'\');"><i class="fa fa-times"></i>
                                                         </button>
                                                 </td>';
                                             echo '</tr>';
