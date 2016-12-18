@@ -63,7 +63,7 @@
                                         </select>
                                     </div>
                             </div>
-                            <div class="row form-group">
+                            <div class="row form-group" id="frmZona">
                                 <label for="txtDescripcion" class="col-lg-2 col-md-3 control-label">Descripcion de Zona:</label>
                                 <div class="col-lg-8 col-md-9">
                                     <input type="text" class="form-control" id="txtDescripcion">

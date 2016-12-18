@@ -30,17 +30,19 @@ function verificarPaginas(base_url){
   function registrarNecesidad(ruta){
     base_url=ruta;
     var necesidad = $('#txtNecesidad').val();
-    $.ajax({
-        url: base_url+'index.php/admin/registrarNecesidad',
-        type: 'POST',
-        data: 'necesidad='+necesidad,
-        success:function(respuesta){
-          alertify.success('Necesidad especial registrada');
-          location.reload();
-        },error: function(respuesta){
-            alertify.error('Lo sentimos, no se pueden cargar los datos.');
-        }
-    });
+    if(validarcampo('txtNecesidad','frmNecesidad','Necesidad Especial')){
+       $.ajax({
+          url: base_url+'index.php/admin/registrarNecesidad',
+          type: 'POST',
+          data: 'necesidad='+necesidad,
+          success:function(respuesta){
+            alertify.success('Necesidad especial registrada');
+            location.reload();
+          },error: function(respuesta){
+              alertify.error('Lo sentimos, no se pueden cargar los datos.');
+          }
+      });
+    } 
   }
 
   function editarNecesidad(id, descripcion, state){ 
@@ -61,18 +63,22 @@ function verificarPaginas(base_url){
       var id = $('#txtEditId').val();
       var descripcion = $('#txtEditDescription').val();
       var estado = $('input:radio[name=rbEditEstado]:checked').val();
-      $.ajax({
-          url: base_url+'index.php/admin/editarNecesidad', //Nombre del controlador
-          type: 'POST',
-          /*con & se concatenan variables*/
-          data: 'id='+id + '&descripcion=' + descripcion + '&estado=' + estado, //id, descripción, estado
-          success:function(respuesta){
-            location.reload();
-            alertify.success('Se ha actualizado los datos de la necesidad especial indicada.');
-          },error: function(respuesta){
-            alertify.error('No se ha logrado actualizar la necesidad especial indicada. Actualice la página y vuelva a intentarlo');
-          }
-      });
+
+      if(validarcampo('txtEditDescription','frmEditDescription','Necesidad Especial')){
+        $.ajax({
+            url: base_url+'index.php/admin/editarNecesidad', //Nombre del controlador
+            type: 'POST',
+            /*con & se concatenan variables*/
+            data: 'id='+id + '&descripcion=' + descripcion + '&estado=' + estado, //id, descripción, estado
+            success:function(respuesta){
+              location.reload();
+              alertify.success('Se ha actualizado los datos de la necesidad especial indicada.');
+            },error: function(respuesta){
+              alertify.error('No se ha logrado actualizar la necesidad especial indicada. Actualice la página y vuelva a intentarlo');
+            }
+        });
+      }
+     
     }
 
   function confEliminarNecesidad(ruta, id){
@@ -108,17 +114,21 @@ function verificarPaginas(base_url){
     var tipoDispositivo = $('#cboTipoZona').val();
     var sala = $('#cboSala').val();
     var descripcion = $('#txtDescripcion').val();
-    $.ajax({
-        url: base_url+'index.php/admin/registrarDispositivo',
-        type: 'POST',
-        data: 'id='+id+'&sala='+sala+'&tipoDispositivo='+tipoDispositivo+'&descripcion='+descripcion,
-        success:function(respuesta){
-          alertify.success('Nueva zona registrada');
-          location.reload();
-        },error: function(respuesta){
-            alertify.error('Lo sentimos, no se pueden registrar los datos.');
-        }
-    });
+
+    if(validarcampo('txtDescripcion','frmZona','Zona')){
+      $.ajax({
+          url: base_url+'index.php/admin/registrarDispositivo',
+          type: 'POST',
+          data: 'id='+id+'&sala='+sala+'&tipoDispositivo='+tipoDispositivo+'&descripcion='+descripcion,
+          success:function(respuesta){
+            alertify.success('Nueva zona registrada');
+            location.reload();
+          },error: function(respuesta){
+              alertify.error('Lo sentimos, no se pueden registrar los datos.');
+          }
+      });
+    }
+    
   }
 
   function confEliminarZona(ruta, id){
@@ -325,18 +335,23 @@ function verificarPaginas(base_url){
       var id = $('#txtEditId').val();
       var descripcion = $('#txtEditDescription').val();
       var estado = $('input:radio[name=rbEditEstado]:checked').val();
-      $.ajax({
-          url: base_url+'index.php/admin/editarTipoZona', //Nombre del controlador
-          type: 'POST',
-          /*con & se concatenan variables*/
-          data: 'id='+id + '&descripcion=' + descripcion + '&estado=' + estado, //id, descripción, estado
-          success:function(respuesta){
-            location.reload();
-            alertify.success('Tipo de zona editada');
-          },error: function(respuesta){
-            alertify.error('No se ha logrado registrar el nuevo tipo de zona. Actualice la página y vuelva a intentarlo');
-          }
-      });
+
+      if(validarcampo('txtEditDescription','frmEditDescription','Tipo de Zona')){
+        $.ajax({
+            url: base_url+'index.php/admin/editarTipoZona', //Nombre del controlador
+            type: 'POST',
+            /*con & se concatenan variables*/
+            data: 'id='+id + '&descripcion=' + descripcion + '&estado=' + estado, //id, descripción, estado
+            success:function(respuesta){
+              location.reload();
+              alertify.success('Tipo de zona editada');
+            },error: function(respuesta){
+              alertify.error('No se ha logrado registrar el nuevo tipo de zona. Actualice la página y vuelva a intentarlo');
+            }
+        });
+      }
+
+      
     }
 
     function confEliminarTipoZona(ruta, id){
@@ -389,18 +404,23 @@ function verificarPaginas(base_url){
       var id = $('#txtEditId').val();
       var descripcion = $('#txtEditDescription').val();
       var estado = $('input:radio[name=rbEditEstado]:checked').val();
-      $.ajax({
-          url: base_url+'index.php/admin/editarSala', //Nombre del controlador
-          type: 'POST',
-          /*con & se concatenan variables*/
-          data: 'id='+id + '&descripcion=' + descripcion + '&estado=' + estado, //id, descripción, estado
-          success:function(respuesta){
-            location.reload();
-            alertify.success('Tipo de zona editada');
-          },error: function(respuesta){
-            alertify.error('No se ha logrado registrar el nuevo tipo de zona. Actualice la página y vuelva a intentarlo');
-          }
-      });
+
+      if(validarcampo('txtEditDescription','frmEditDescription','Sala')){
+        $.ajax({
+            url: base_url+'index.php/admin/editarSala', //Nombre del controlador
+            type: 'POST',
+            /*con & se concatenan variables*/
+            data: 'id='+id + '&descripcion=' + descripcion + '&estado=' + estado, //id, descripción, estado
+            success:function(respuesta){
+              location.reload();
+              alertify.success('Tipo de zona editada');
+            },error: function(respuesta){
+              alertify.error('No se ha logrado registrar el nuevo tipo de zona. Actualice la página y vuelva a intentarlo');
+            }
+        });
+      }
+
+      
     }
 
     function confEliminarSala(ruta, id){
@@ -749,4 +769,17 @@ function verificarPaginas(base_url){
 
   function verEventos(ZONid){
   	document.forms['form-'+ELEid].submit();
+  }
+
+  //Función para la validación
+  function validarcampo (id,groupid,campo) {
+    var idcampo = $('#'+id).val();
+    if(idcampo.length<3){
+      alertify.error(campo +' ingresado(a) no válido, debe contener almenos 3 letras');
+      $('#'+groupid).addClass("has-error");
+      return false;
+    }else{
+      $('#'+groupid).removeClass("has-error");
+    }
+    return true;
   }

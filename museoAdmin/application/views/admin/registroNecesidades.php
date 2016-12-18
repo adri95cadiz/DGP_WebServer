@@ -15,7 +15,7 @@
                 	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
                 		<form class="form-horizontal" role="form">
 		                    <div class="col-lg-9">
-		                        <div class="form-group row">
+		                        <div class="form-group row" id="frmNecesidad">
 		                            <label for="txtNecesidad" class="col-lg-3 col-sm-12 control-label">Necesidad especial:</label>
 		                            <div class="col-lg-9 col-sm-12">
 		                                <input id="txtNecesidad" type="text" class="form-control">

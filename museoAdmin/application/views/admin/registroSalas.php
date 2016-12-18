@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col-lg-10 col-lg-offset-1">
                         <form class="form-horizontal" method="POST" role="form" action="<?php echo base_url(); ?>index.php/admin/registrarSala">
-                            <div class="form-group">
+                            <div class="form-group" id="frmSala">
                                 <div class="control-label col-lg-2 col-md-3">
                                     <label for="txtSala">Nombre de sala:</label>
                                 </div>

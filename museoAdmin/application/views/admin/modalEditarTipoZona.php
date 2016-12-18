@@ -15,7 +15,7 @@
                                 <div class="row">
                                     <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
                                         <form role="form" class="form-horizontal">
-                                            <div class="form-group ">
+                                            <div class="form-group" id="frmEditDescription">
                                                 <label for="txtEditDescription" class="col-lg-3 col-md-3 col-sm-3 control-label">Descripción:</label>
                                                 <div class="col-lg-8 col-md-8 col-sm-8">
                                                     <input type="text" class="hidden" id="txtEditId" hidden>
