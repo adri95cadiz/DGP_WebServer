@@ -25,10 +25,10 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-5">
-                                    <button class="btn btn-block btn-default" id="btnAceptarModalAlerta2">Aceptar</button> 
+                                    <button class="btn btn-block btn-default" id="btnAceptarModalAlerta2">ELIMINAR</button> 
                                 </div>
                                 <div class="col-md-5 col-md-offset-1">
-                                    <button class="btn btn-block btn-primary" data-dismiss="modal">Cancelar</button> 
+                                    <button class="btn btn-block btn-primary" data-dismiss="modal">CANCELAR</button> 
                                 </div>
                             </div>
                         </div>

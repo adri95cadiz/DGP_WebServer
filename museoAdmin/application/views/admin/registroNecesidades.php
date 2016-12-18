@@ -57,7 +57,7 @@
                                                 echo '<td width="20%">'.$row['FEAdescription'].'</td>';
                                                 echo '<td>'.$row['FEAstate'].'</td>';
                                                 echo '<td class="center text-center" width="10%">'?>
-                                                    <button type="submit" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-pencil"></i> </button>
+                                                    <button type="submit" class="btn btn-warning btn-circle btn-sm" onClick="editarNecesidad('<?php echo $row['FEAid']; ?>', '<?php echo $row['FEAdescription']; ?>', '<?php echo $row['FEAstate']; ?>')"><i class="fa fa-pencil" ></i> </button>
                                                 <?php 
                                                 echo '</td>';
                                                 echo '<td class="center text-center" width="10%">

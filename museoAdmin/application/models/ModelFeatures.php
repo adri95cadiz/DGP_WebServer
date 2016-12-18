@@ -1,6 +1,6 @@
 <?php 
-	if( !defined('BASEPATH')) 
-		exit('No se permite acceso al script');
+    if( !defined('BASEPATH')) 
+        exit('No se permite acceso al script');
 
 class ModelFeatures extends CI_Model {
 
@@ -10,7 +10,13 @@ class ModelFeatures extends CI_Model {
     }
 
     public function getFeatures(){
-        $sql= "call SP_features(1, '', '', '');";
+        $sql= "call SP_features(1, '', '', '');";       //Listamos solo las necesidad especial que estancon estado A
+        $query = $this->modelZone->async_query($sql);
+        return $query;
+    }
+
+    public function getAllFeatures(){
+        $sql= "call SP_features(5, '', '', '')";       //Listamos todooo
         $query = $this->modelZone->async_query($sql);
         return $query;
     }
@@ -21,8 +27,8 @@ class ModelFeatures extends CI_Model {
         return $query;
     }
 
-    public function editFeature($id){
-        $sql= "call SP_features(3, '".$id."','', '');";
+    public function updFeature($id, $description, $estado){
+        $sql = "call SP_features(3, '".$id."', '".$description."', '".$estado."')";
         $query = $this->db->query($sql);
         return $query;
     }

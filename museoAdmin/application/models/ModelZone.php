@@ -1,6 +1,6 @@
 <?php 
-	if( !defined('BASEPATH')) 
-		exit('No se permite acceso al script');
+    if( !defined('BASEPATH')) 
+        exit('No se permite acceso al script');
 
 class ModelZone extends CI_Model {
 

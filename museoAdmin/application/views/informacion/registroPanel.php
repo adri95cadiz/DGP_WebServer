@@ -33,12 +33,12 @@
                                     <b><p>Datos de la zona:</p></b>
                                     </big>
                                 </div>
-                                <div class="col-lg-3 col-md-4 col-sm-12">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
                                     <i class="fa fa-angle-double-right"></i> <b>Código:</b> <?php echo $ZONid; ?>
                                 </div>
-                                <div class="col-lg-9 col-md-8 col-sm-12">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
                                     <i class="fa fa-angle-double-right"></i> <b>
-                                     de zona: </b> <?php echo $ELEdescription; ?>
+                                    Tipo de zona: </b> <?php echo $ELEdescription; ?>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <i class="fa fa-angle-double-right"></i> <b>Descripción: </b> <?php echo $ZONdescription; ?>
@@ -93,8 +93,8 @@
                                                                 <button type="submit" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-pencil"></i> </button>
                                                             </form>
                                                         </td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-danger btn-circle" onClick="confirmacionEliminar('<?php echo base_url(); ?>')"><i class="fa fa-times"></i></button>
+                                                        <td width="7%" class="center text-center" width="10%">
+                                                            <button type="button" class="btn btn-danger btn-circle" onClick="confEliminarPanel('<?php echo base_url(); ?>', '<?php echo $row['ZONid']; ?>', '<?php echo $row['PANid']; ?>');"><i class="fa fa-times"></i></button>
                                                         </td>
                                                       </tr>
                                                 <?php

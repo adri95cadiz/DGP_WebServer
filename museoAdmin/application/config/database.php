@@ -78,7 +78,6 @@ $db['default'] = array(
 	// 'hostname' => '46.101.93.32',
 	'hostname' => 'localhost',
 	'username' => 'root',
-	// 'password' => '123456admin',
 	'password' => '',
 	'database' => 'BDMUSEO',
 	'dbdriver' => 'mysqli',			//el dbdriver de mariadb es el mismo mysqli

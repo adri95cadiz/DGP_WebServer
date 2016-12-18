@@ -27,6 +27,11 @@ class ModelPanelDesc extends CI_Model {
         return $query->result();
     }
 
+    public function deletePanelDescByPanel($zona, $panel){
+        $sql= "call SP_panelDesc(4, '".$panel."', '".$zona."', '1', '', '', '', '');";
+        $query = $this->db->query($sql);
+        return $query;
+    }
 
 
     

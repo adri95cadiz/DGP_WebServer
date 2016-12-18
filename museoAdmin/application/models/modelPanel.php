@@ -1,6 +1,6 @@
 <?php 
-	if( !defined('BASEPATH')) 
-		exit('No se permite acceso al script');
+    if( !defined('BASEPATH')) 
+        exit('No se permite acceso al script');
 
 class ModelPanel extends CI_Model {
 
@@ -32,7 +32,11 @@ class ModelPanel extends CI_Model {
         return $rpta;
     }
 
-    
+    public function deletePanel($zona, $panel){
+        $sql= "call SP_panels(4, '".$panel."', '".$zona."', '', '');";
+        $query = $this->db->query($sql);
+        return $sql;
+    }
 
 }
 ?>

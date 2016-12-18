@@ -15,5 +15,30 @@ class ModelRooms extends CI_Model {
         return $query;
     }
 
+    public function getAllRooms(){
+        $sql= "call SP_rooms(5, '', '', '')";       //Listamos todas las salas
+        $query = $this->modelZone->async_query($sql);
+        return $query;
+    }
+
+    public function addRoom($description){
+        $sql = "call SP_rooms(2, '', '".$description."', '')";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+    public function updRoom($id, $description, $estado){
+        $sql = "call SP_rooms(3, '".$id."', '".$description."', '".$estado."')";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+    public function deleteRoom($id){
+        $sql = "call SP_rooms(4, '".$id."', '', '')";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+
 }
 ?>

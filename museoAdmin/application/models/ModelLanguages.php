@@ -9,7 +9,7 @@ class ModelLanguages extends CI_Model {
         parent::__construct();
     }
 
-    public function getAllLanguages(){
+    public function getInactiveLanguages(){
         $sql= "call SP_languages(1, '', '', '', '');";
         $query = $this->db->query($sql);
         return $query;
@@ -20,6 +20,19 @@ class ModelLanguages extends CI_Model {
         $query = $this->modelZone->async_query($sql);
         return $query;
     }
+
+    public function activateLanguage($idioma){
+        $sql= "call SP_languages(2, '".$idioma."', '', '', '');";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+    public function desactivateLanguage($idioma){
+        $sql= "call SP_languages(4, '".$idioma."', '', '', '');";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
 
 }
 ?>
